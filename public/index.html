@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCOUT Design System | TourRadar Component Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+/* ═══════════════════════════════════════════════════════════
+   SCOUT DESIGN SYSTEM TOKENS
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  /* ── Brand Colors (from TourRadar live site + Figma) ── */
+  --color-primary: #177FA4;
+  --color-primary-dark: #0E6D8D;
+  --color-primary-light: #409CD1;
+  --color-primary-bg: #E6F4FD;
+  --color-accent: #7B61FF;
+  --color-accent-light: #A78BFA;
+
+  /* ── Scout Spectrum ── */
+  --color-violet-10: #F3F0FF; --color-violet-20: #E0DBFF; --color-violet-30: #C4B5FD;
+  --color-violet-40: #A78BFA; --color-violet-50: #8B5CF6; --color-violet-60: #7C3AED;
+  --color-violet-70: #6D28D9; --color-violet-80: #5B21B6; --color-violet-90: #4C1D95; --color-violet-100: #3B0764;
+
+  --color-indigo-10: #EEF2FF; --color-indigo-20: #E0E7FF; --color-indigo-30: #C7D2FE;
+  --color-indigo-40: #A5B4FC; --color-indigo-50: #818CF8; --color-indigo-60: #6366F1;
+  --color-indigo-70: #4F46E5; --color-indigo-80: #4338CA; --color-indigo-90: #3730A3; --color-indigo-100: #312E81;
+
+  --color-blue-10: #EFF6FF; --color-blue-20: #DBEAFE; --color-blue-30: #BFDBFE;
+  --color-blue-40: #93C5FD; --color-blue-50: #3B82F6; --color-blue-60: #2563EB;
+  --color-blue-70: #1D4ED8; --color-blue-80: #1E40AF; --color-blue-90: #1E3A8A; --color-blue-100: #172554;
+
+  --color-teal-10: #E6F4FD; --color-teal-20: #CCE9FB; --color-teal-30: #99D3F7;
+  --color-teal-40: #66BDF3; --color-teal-50: #409CD1; --color-teal-60: #177FA4;
+  --color-teal-70: #0E6D8D; --color-teal-80: #0A5A75; --color-teal-90: #07475D; --color-teal-100: #043445;
+
+  --color-green-10: #ECFDF5; --color-green-20: #D1FAE5; --color-green-30: #A7F3D0;
+  --color-green-40: #6EE7B7; --color-green-50: #34D399; --color-green-60: #10B981;
+  --color-green-70: #059669; --color-green-80: #047857; --color-green-90: #065F46; --color-green-100: #064E3B;
+
+  --color-amber-10: #FFFBEB; --color-amber-20: #FEF3C7; --color-amber-30: #FDE68A;
+  --color-amber-40: #FCD34D; --color-amber-50: #FBBF24; --color-amber-60: #F59E0B;
+  --color-amber-70: #D97706; --color-amber-80: #B45309; --color-amber-90: #92400E; --color-amber-100: #78350F;
+
+  --color-orange-10: #FFF7ED; --color-orange-20: #FFEDD5; --color-orange-30: #FED7AA;
+  --color-orange-40: #FDBA74; --color-orange-50: #FCA336; --color-orange-60: #F97316;
+  --color-orange-70: #EA580C; --color-orange-80: #C2410C; --color-orange-90: #9A3412; --color-orange-100: #7C2D12;
+
+  --color-red-10: #FDEFEF; --color-red-20: #FEE2E2; --color-red-30: #FECACA;
+  --color-red-40: #FCA5A5; --color-red-50: #F87171; --color-red-60: #E22B2C;
+  --color-red-70: #C32224; --color-red-80: #991B1B; --color-red-90: #7F1D1D; --color-red-100: #6C0C0D;
+
+  --color-pink-10: #FDF2F8; --color-pink-20: #FCE7F3; --color-pink-30: #FBCFE8;
+  --color-pink-40: #F9A8D4; --color-pink-50: #F472B6; --color-pink-60: #EC4899;
+  --color-pink-70: #DB2777; --color-pink-80: #BE185D; --color-pink-90: #9D174D; --color-pink-100: #831843;
+
+  /* ── Semantic Colors ── */
+  --color-info: #3B82F6;
+  --color-warning: #FCA336;
+  --color-error: #E22B2C;
+  --color-success: #10B981;
+
+  /* ── Neutral Colors ── */
+  --color-grey-0: #FFFFFF; --color-grey-10: #F4F5F5; --color-grey-20: #E3E5E6;
+  --color-grey-30: #BBC0C2; --color-grey-40: #A8ADAF; --color-grey-50: #8B9194;
+  --color-grey-60: #616668; --color-grey-70: #4A4F51; --color-grey-80: #3D4142;
+  --color-grey-90: #323637; --color-grey-100: #1A1D1E;
+
+  /* ── UI Aliases ── */
+  --text-primary: #323637;
+  --text-secondary: #616668;
+  --text-muted: #A8ADAF;
+  --bg-page: #FFFFFF;
+  --bg-surface: #FFFFFF;
+  --bg-muted: #F4F5F5;
+  --bg-subtle: #F1F2F3;
+  --border-default: #E3E5E6;
+  --border-light: #F4F5F5;
+
+  /* ── Typography ── */
+  --font-family: 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
+  --font-family-display: 'Inter', var(--font-family);
+  --font-size-base: 16px;
+  --font-size-h1: 2.441em; --font-size-h2: 1.953em; --font-size-h3: 1.563em;
+  --font-size-h4: 1.25em;  --font-size-h5: 1em;     --font-size-h6: 0.75em;
+  --font-size-body: 1em; --font-size-sm: 0.875em; --font-size-xs: 0.75em;
+  --font-weight-regular: 400; --font-weight-medium: 500;
+  --font-weight-semibold: 600; --font-weight-bold: 700;
+  --line-height-tight: 1.25; --line-height-normal: 1.5; --line-height-relaxed: 1.75;
+
+  /* ── Spacing ── */
+  --space-xxxs: 2px;  --space-xxs: 4px;   --space-xs: 8px;    --space-s: 12px;
+  --space-m: 16px;    --space-l: 24px;     --space-xl: 32px;   --space-xxl: 48px;
+  --space-xxxl: 64px; --space-xxxxl: 80px; --space-xxxxxl: 96px;
+
+  /* ── Border Radius (from Figma variables) ── */
+  --radius-xs: 5px;  --radius-s: 7px;   --radius-m: 9px;
+  --radius-l: 11px;  --radius-xl: 13px; --radius-xxl: 15px;
+  --radius-xxxl: 19px; --radius-pill: 9999px;
+
+  /* ── Elevation ── */
+  --shadow-xs: 0 1px 2px rgba(50,54,55,0.05);
+  --shadow-sm: 0 1px 3px rgba(50,54,55,0.08), 0 1px 2px rgba(50,54,55,0.06);
+  --shadow-md: 0 4px 6px rgba(50,54,55,0.07), 0 2px 4px rgba(50,54,55,0.06);
+  --shadow-lg: 0 10px 15px rgba(50,54,55,0.07), 0 4px 6px rgba(50,54,55,0.05);
+  --shadow-xl: 0 20px 25px rgba(50,54,55,0.08), 0 8px 10px rgba(50,54,55,0.04);
+
+  /* ── Transitions ── */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+
+  /* ── Layout ── */
+  --container-max: 1200px;
+  --sidebar-width: 240px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: var(--font-size-base); scroll-behavior: smooth; }
+body {
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  background: var(--bg-page);
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SHOWCASE LAYOUT
+   ═══════════════════════════════════════════════════════════ */
+.ds-header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--color-teal-90);
+  color: white; padding: 0 var(--space-l);
+  height: 56px; display: flex; align-items: center; gap: var(--space-m);
+  box-shadow: var(--shadow-md);
+}
+.ds-header h1 { font-size: 1.1em; font-weight: 600; font-family: var(--font-family-display); }
+.ds-header .badge { background: var(--color-primary-light); color: white; padding: 2px 10px; border-radius: var(--radius-pill); font-size: var(--font-size-xs); }
+.ds-layout { display: flex; min-height: calc(100vh - 56px); }
+.ds-sidebar {
+  width: var(--sidebar-width); flex-shrink: 0;
+  background: var(--bg-muted); border-right: 1px solid var(--border-default);
+  padding: var(--space-m) 0; position: sticky; top: 56px;
+  height: calc(100vh - 56px); overflow-y: auto;
+}
+.ds-sidebar a {
+  display: block; padding: 6px var(--space-l); color: var(--text-secondary);
+  text-decoration: none; font-size: var(--font-size-sm); transition: all var(--transition-fast);
+}
+.ds-sidebar a:hover { color: var(--color-primary); background: rgba(23,127,164,0.06); }
+.ds-sidebar a.active { color: var(--color-primary); font-weight: 600; border-right: 3px solid var(--color-primary); }
+.ds-sidebar .nav-group { font-weight: 700; font-size: var(--font-size-xs); text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); padding: var(--space-m) var(--space-l) var(--space-xxs); }
+.ds-sidebar .sub { padding-left: var(--space-xl); font-size: var(--font-size-xs); }
+.ds-main { flex: 1; padding: var(--space-xl); max-width: calc(100% - var(--sidebar-width)); }
+
+/* ── Section styles ── */
+.ds-section { margin-bottom: var(--space-xxxl); scroll-margin-top: 72px; }
+.ds-section-title { font-size: var(--font-size-h2); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-xs); font-family: var(--font-family-display); }
+.ds-section-desc { color: var(--text-secondary); margin-bottom: var(--space-l); font-size: var(--font-size-sm); }
+.ds-subsection { margin-bottom: var(--space-xl); }
+.ds-subsection-title { font-size: var(--font-size-h4); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-s); border-bottom: 1px solid var(--border-default); padding-bottom: var(--space-xs); }
+.ds-component-row { display: flex; flex-wrap: wrap; gap: var(--space-m); align-items: flex-start; margin-bottom: var(--space-m); }
+.ds-label { font-size: var(--font-size-xs); color: var(--text-muted); margin-bottom: var(--space-xxs); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+
+/* ═══════════════════════════════════════════════════════════
+   FOUNDATION: COLORS
+   ═══════════════════════════════════════════════════════════ */
+.color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: var(--space-xs); }
+.color-swatch { border-radius: var(--radius-m); overflow: hidden; border: 1px solid var(--border-default); }
+.color-swatch-block { height: 60px; }
+.color-swatch-label { padding: var(--space-xxs) var(--space-xs); font-size: 10px; color: var(--text-secondary); background: white; }
+.color-swatch-label code { font-size: 9px; color: var(--text-muted); display: block; }
+.color-row { display: flex; gap: 2px; margin-bottom: var(--space-xs); }
+.color-row .chip { width: 48px; height: 48px; border-radius: var(--radius-xs); }
+
+/* ═══════════════════════════════════════════════════════════
+   FOUNDATION: TYPOGRAPHY
+   ═══════════════════════════════════════════════════════════ */
+.type-sample { margin-bottom: var(--space-s); }
+.type-sample .meta { font-size: var(--font-size-xs); color: var(--text-muted); margin-top: 2px; }
+
+/* ═══════════════════════════════════════════════════════════
+   FOUNDATION: SPACING
+   ═══════════════════════════════════════════════════════════ */
+.spacing-row { display: flex; align-items: center; gap: var(--space-m); margin-bottom: var(--space-xs); }
+.spacing-bar { background: var(--color-primary-bg); border: 1px solid var(--color-primary-light); height: 24px; border-radius: 3px; }
+.spacing-label { font-size: var(--font-size-xs); color: var(--text-secondary); min-width: 100px; }
+
+/* ═══════════════════════════════════════════════════════════
+   FOUNDATION: ELEVATION & RADIUS
+   ═══════════════════════════════════════════════════════════ */
+.elevation-grid { display: flex; flex-wrap: wrap; gap: var(--space-l); }
+.elevation-card { width: 140px; height: 100px; background: white; border-radius: var(--radius-m); display: flex; align-items: center; justify-content: center; font-size: var(--font-size-xs); color: var(--text-secondary); }
+.radius-grid { display: flex; flex-wrap: wrap; gap: var(--space-m); }
+.radius-sample { width: 80px; height: 80px; background: var(--color-primary-bg); border: 2px solid var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--color-primary-dark); font-weight: 600; }
+
+/* ═══════════════════════════════════════════════════════════
+   UI ELEMENTS: BUTTONS
+   ═══════════════════════════════════════════════════════════ */
+.btn {
+  display: inline-flex; align-items: center; gap: var(--space-xs);
+  font-family: var(--font-family); font-weight: 600; cursor: pointer;
+  border: 2px solid transparent; border-radius: var(--radius-m);
+  transition: all var(--transition-fast); text-decoration: none;
+  line-height: 1; white-space: nowrap;
+}
+.btn-sm { padding: 6px 14px; font-size: var(--font-size-xs); }
+.btn-md { padding: 10px 20px; font-size: var(--font-size-sm); }
+.btn-lg { padding: 14px 28px; font-size: 1em; }
+.btn-primary { background: var(--color-primary); color: white; }
+.btn-primary:hover { background: var(--color-primary-dark); }
+.btn-primary:active { background: var(--color-teal-80); transform: scale(0.98); }
+.btn-secondary { background: var(--bg-muted); color: var(--text-primary); border-color: var(--border-default); }
+.btn-secondary:hover { background: var(--color-grey-20); }
+.btn-outline { background: transparent; color: var(--color-primary); border-color: var(--color-primary); }
+.btn-outline:hover { background: var(--color-primary-bg); }
+.btn-text { background: transparent; color: var(--color-primary); border: none; }
+.btn-text:hover { background: var(--color-primary-bg); }
+.btn-danger { background: var(--color-error); color: white; }
+.btn-danger:hover { background: var(--color-red-70); }
+.btn:disabled, .btn.disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
+.btn-loading { position: relative; color: transparent !important; pointer-events: none; }
+.btn-loading::after { content: ''; position: absolute; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.6s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ═══════════════════════════════════════════════════════════
+   UI ELEMENTS: BADGES & TAGS
+   ═══════════════════════════════════════════════════════════ */
+.badge-el {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 10px; border-radius: var(--radius-pill);
+  font-size: var(--font-size-xs); font-weight: 600; line-height: 1.4;
+}
+.badge-primary { background: var(--color-primary-bg); color: var(--color-primary-dark); }
+.badge-success { background: var(--color-green-10); color: var(--color-green-70); }
+.badge-warning { background: var(--color-amber-10); color: var(--color-amber-80); }
+.badge-danger { background: var(--color-red-10); color: var(--color-red-70); }
+.badge-info { background: var(--color-blue-10); color: var(--color-blue-70); }
+.badge-neutral { background: var(--bg-muted); color: var(--text-secondary); }
+.badge-count { min-width: 22px; height: 22px; padding: 0 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+.badge-discount { background: var(--color-error); color: white; font-weight: 700; padding: 3px 8px; border-radius: var(--radius-xs); }
+
+.tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 12px; border-radius: var(--radius-pill);
+  font-size: var(--font-size-xs); border: 1px solid var(--border-default);
+  color: var(--text-secondary); cursor: pointer; transition: all var(--transition-fast);
+}
+.tag:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.tag-active { background: var(--color-primary-bg); border-color: var(--color-primary); color: var(--color-primary); }
+.tag .tag-remove { cursor: pointer; font-size: 14px; line-height: 1; opacity: 0.6; }
+.tag .tag-remove:hover { opacity: 1; color: var(--color-error); }
+
+/* ═══════════════════════════════════════════════════════════
+   UI ELEMENTS: INPUT FIELDS
+   ═══════════════════════════════════════════════════════════ */
+.form-group { margin-bottom: var(--space-m); }
+.form-label { display: block; font-size: var(--font-size-sm); font-weight: 500; color: var(--text-primary); margin-bottom: var(--space-xxs); }
+.form-input {
+  width: 100%; padding: 10px 14px; border: 1px solid var(--border-default);
+  border-radius: var(--radius-m); font-size: var(--font-size-sm);
+  font-family: var(--font-family); color: var(--text-primary);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  background: white; outline: none;
+}
+.form-input:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(23,127,164,0.15); }
+.form-input:disabled { background: var(--bg-muted); color: var(--text-muted); cursor: not-allowed; }
+.form-input.error { border-color: var(--color-error); }
+.form-input.error:focus { box-shadow: 0 0 0 3px rgba(226,43,44,0.15); }
+.form-hint { font-size: var(--font-size-xs); color: var(--text-muted); margin-top: var(--space-xxs); }
+.form-error { font-size: var(--font-size-xs); color: var(--color-error); margin-top: var(--space-xxs); }
+.form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23616668' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+textarea.form-input { min-height: 100px; resize: vertical; }
+
+/* ── Checkbox & Radio ── */
+.form-check { display: flex; align-items: center; gap: var(--space-xs); cursor: pointer; font-size: var(--font-size-sm); }
+.form-check input[type="checkbox"], .form-check input[type="radio"] {
+  width: 18px; height: 18px; accent-color: var(--color-primary); cursor: pointer;
+}
+
+/* ── Toggle ── */
+.toggle { position: relative; width: 44px; height: 24px; cursor: pointer; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.toggle-slider {
+  position: absolute; inset: 0; background: var(--color-grey-30);
+  border-radius: var(--radius-pill); transition: background var(--transition-fast);
+}
+.toggle-slider::before {
+  content: ''; position: absolute; width: 18px; height: 18px;
+  left: 3px; top: 3px; background: white; border-radius: 50%;
+  transition: transform var(--transition-fast); box-shadow: var(--shadow-xs);
+}
+.toggle input:checked + .toggle-slider { background: var(--color-primary); }
+.toggle input:checked + .toggle-slider::before { transform: translateX(20px); }
+
+/* ═══════════════════════════════════════════════════════════
+   UI ELEMENTS: RATINGS
+   ═══════════════════════════════════════════════════════════ */
+.rating { display: inline-flex; align-items: center; gap: 2px; }
+.star { color: var(--color-amber-50); font-size: 18px; }
+.star.empty { color: var(--color-grey-20); }
+.star.half { position: relative; color: var(--color-grey-20); }
+.star.half::before { content: '\2605'; position: absolute; color: var(--color-amber-50); overflow: hidden; width: 50%; }
+.rating-text { margin-left: var(--space-xs); font-size: var(--font-size-sm); color: var(--text-secondary); }
+.rating-lg .star { font-size: 24px; }
+
+/* ═══════════════════════════════════════════════════════════
+   UI ELEMENTS: ACCORDION
+   ═══════════════════════════════════════════════════════════ */
+.accordion { border: 1px solid var(--border-default); border-radius: var(--radius-m); overflow: hidden; }
+.accordion-item { border-bottom: 1px solid var(--border-default); }
+.accordion-item:last-child { border-bottom: none; }
+.accordion-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-m); cursor: pointer; background: white;
+  font-weight: 500; transition: background var(--transition-fast); user-select: none;
+}
+.accordion-header:hover { background: var(--bg-muted); }
+.accordion-icon { transition: transform var(--transition-normal); font-size: 12px; color: var(--text-muted); }
+.accordion-item.open .accordion-icon { transform: rotate(180deg); }
+.accordion-body { max-height: 0; overflow: hidden; transition: max-height var(--transition-normal); }
+.accordion-body-inner { padding: 0 var(--space-m) var(--space-m); color: var(--text-secondary); font-size: var(--font-size-sm); line-height: var(--line-height-relaxed); }
+.accordion-item.open .accordion-body { max-height: 500px; }
+
+/* ═══════════════════════════════════════════════════════════
+   UI ELEMENTS: TABS
+   ═══════════════════════════════════════════════════════════ */
+.tabs { border-bottom: 2px solid var(--border-default); display: flex; gap: 0; }
+.tab-btn {
+  padding: var(--space-s) var(--space-m); border: none; background: none;
+  font-family: var(--font-family); font-size: var(--font-size-sm); font-weight: 500;
+  color: var(--text-secondary); cursor: pointer; position: relative;
+  transition: color var(--transition-fast); border-bottom: 2px solid transparent; margin-bottom: -2px;
+}
+.tab-btn:hover { color: var(--text-primary); }
+.tab-btn.active { color: var(--color-primary); border-bottom-color: var(--color-primary); font-weight: 600; }
+.tab-panel { padding: var(--space-m) 0; display: none; }
+.tab-panel.active { display: block; }
+
+/* ═══════════════════════════════════════════════════════════
+   UI ELEMENTS: DROPDOWN
+   ═══════════════════════════════════════════════════════════ */
+.dropdown { position: relative; display: inline-block; }
+.dropdown-trigger { cursor: pointer; }
+.dropdown-menu {
+  position: absolute; top: 100%; left: 0; min-width: 200px;
+  background: white; border: 1px solid var(--border-default);
+  border-radius: var(--radius-m); box-shadow: var(--shadow-lg);
+  padding: var(--space-xxs) 0; z-index: 50;
+  opacity: 0; visibility: hidden; transform: translateY(-4px);
+  transition: all var(--transition-fast);
+}
+.dropdown.open .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(4px); }
+.dropdown-item {
+  display: block; padding: var(--space-xs) var(--space-m);
+  font-size: var(--font-size-sm); color: var(--text-primary);
+  text-decoration: none; cursor: pointer; transition: background var(--transition-fast);
+}
+.dropdown-item:hover { background: var(--bg-muted); }
+.dropdown-divider { border-top: 1px solid var(--border-default); margin: var(--space-xxs) 0; }
+
+/* ═══════════════════════════════════════════════════════════
+   UI ELEMENTS: ALERTS / MESSAGING
+   ═══════════════════════════════════════════════════════════ */
+.alert {
+  padding: var(--space-s) var(--space-m); border-radius: var(--radius-m);
+  display: flex; align-items: flex-start; gap: var(--space-s);
+  font-size: var(--font-size-sm); line-height: var(--line-height-normal);
+}
+.alert-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.alert-close { margin-left: auto; cursor: pointer; opacity: 0.6; font-size: 18px; background: none; border: none; }
+.alert-close:hover { opacity: 1; }
+.alert-info { background: var(--color-blue-10); color: var(--color-blue-80); border: 1px solid var(--color-blue-20); }
+.alert-success { background: var(--color-green-10); color: var(--color-green-80); border: 1px solid var(--color-green-20); }
+.alert-warning { background: var(--color-amber-10); color: var(--color-amber-90); border: 1px solid var(--color-amber-20); }
+.alert-error { background: var(--color-red-10); color: var(--color-red-80); border: 1px solid var(--color-red-20); }
+
+/* ═══════════════════════════════════════════════════════════
+   UI ELEMENTS: TOOLTIPS
+   ═══════════════════════════════════════════════════════════ */
+.tooltip-wrap { position: relative; display: inline-block; }
+.tooltip-content {
+  position: absolute; background: var(--color-grey-90); color: white;
+  padding: 6px 12px; border-radius: var(--radius-s); font-size: 12px;
+  white-space: nowrap; opacity: 0; visibility: hidden; pointer-events: none;
+  transition: all var(--transition-fast); z-index: 60;
+}
+.tooltip-content::after { content: ''; position: absolute; border: 5px solid transparent; }
+.tooltip-top .tooltip-content { bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); }
+.tooltip-top .tooltip-content::after { top: 100%; left: 50%; transform: translateX(-50%); border-top-color: var(--color-grey-90); }
+.tooltip-bottom .tooltip-content { top: calc(100% + 8px); left: 50%; transform: translateX(-50%); }
+.tooltip-bottom .tooltip-content::after { bottom: 100%; left: 50%; transform: translateX(-50%); border-bottom-color: var(--color-grey-90); }
+.tooltip-wrap:hover .tooltip-content { opacity: 1; visibility: visible; }
+
+/* ═══════════════════════════════════════════════════════════
+   UI ELEMENTS: BREADCRUMBS
+   ═══════════════════════════════════════════════════════════ */
+.breadcrumb { display: flex; align-items: center; gap: var(--space-xs); font-size: var(--font-size-sm); }
+.breadcrumb a { color: var(--color-primary-light); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb .sep { color: var(--text-muted); }
+.breadcrumb .current { color: var(--text-secondary); }
+
+/* ═══════════════════════════════════════════════════════════
+   UI ELEMENTS: LISTS
+   ═══════════════════════════════════════════════════════════ */
+.list { border: 1px solid var(--border-default); border-radius: var(--radius-m); overflow: hidden; }
+.list-item {
+  display: flex; align-items: center; gap: var(--space-s); padding: var(--space-s) var(--space-m);
+  border-bottom: 1px solid var(--border-default); font-size: var(--font-size-sm);
+  cursor: pointer; transition: background var(--transition-fast);
+}
+.list-item:last-child { border-bottom: none; }
+.list-item:hover { background: var(--bg-muted); }
+.list-item.selected { background: var(--color-primary-bg); color: var(--color-primary-dark); }
+
+/* ═══════════════════════════════════════════════════════════
+   UI ELEMENTS: MODAL / SCRIM
+   ═══════════════════════════════════════════════════════════ */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 200; opacity: 0; visibility: hidden; transition: all var(--transition-normal);
+}
+.modal-overlay.open { opacity: 1; visibility: visible; }
+.modal {
+  background: white; border-radius: var(--radius-xl); box-shadow: var(--shadow-xl);
+  width: 90%; max-width: 560px; max-height: 85vh; overflow: auto;
+  transform: translateY(20px); transition: transform var(--transition-normal);
+}
+.modal-overlay.open .modal { transform: translateY(0); }
+.modal-header { display: flex; align-items: center; justify-content: space-between; padding: var(--space-m) var(--space-l); border-bottom: 1px solid var(--border-default); }
+.modal-title { font-size: var(--font-size-h4); font-weight: 600; }
+.modal-close { width: 32px; height: 32px; border: none; background: none; cursor: pointer; font-size: 20px; color: var(--text-muted); border-radius: var(--radius-s); display: flex; align-items: center; justify-content: center; }
+.modal-close:hover { background: var(--bg-muted); color: var(--text-primary); }
+.modal-body { padding: var(--space-l); }
+.modal-footer { display: flex; justify-content: flex-end; gap: var(--space-s); padding: var(--space-m) var(--space-l); border-top: 1px solid var(--border-default); }
+
+/* ═══════════════════════════════════════════════════════════
+   COMPOSITE: TOUR CARD
+   ═══════════════════════════════════════════════════════════ */
+.tour-card {
+  border: 1px solid var(--border-default); border-radius: var(--radius-l);
+  overflow: hidden; background: white; transition: box-shadow var(--transition-normal);
+  max-width: 380px;
+}
+.tour-card:hover { box-shadow: var(--shadow-lg); }
+.tour-card-img { position: relative; height: 200px; overflow: hidden; }
+.tour-card-img img { width: 100%; height: 100%; object-fit: cover; }
+.tour-card-img .badge-discount { position: absolute; top: var(--space-s); right: var(--space-s); }
+.tour-card-body { padding: var(--space-m); }
+.tour-card-rating { display: flex; align-items: center; gap: var(--space-xxs); margin-bottom: var(--space-xs); }
+.tour-card-title { font-size: 1.05em; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-xs); line-height: var(--line-height-tight); }
+.tour-card-title a { color: inherit; text-decoration: none; }
+.tour-card-title a:hover { color: var(--color-primary); }
+.tour-card-meta { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-bottom: var(--space-s); }
+.tour-card-meta .tag { font-size: 11px; padding: 2px 8px; }
+.tour-card-operator { font-size: var(--font-size-xs); color: var(--text-muted); margin-bottom: var(--space-s); }
+.tour-card-pricing { display: flex; align-items: baseline; gap: var(--space-xs); margin-bottom: var(--space-s); }
+.tour-card-pricing .original { text-decoration: line-through; color: var(--text-muted); font-size: var(--font-size-sm); }
+.tour-card-pricing .current { font-size: 1.3em; font-weight: 700; color: var(--text-primary); }
+.tour-card-pricing .per-person { font-size: var(--font-size-xs); color: var(--text-muted); }
+.tour-card-actions { display: flex; gap: var(--space-xs); }
+.tour-card-actions .btn { flex: 1; justify-content: center; font-size: var(--font-size-xs); }
+
+/* ═══════════════════════════════════════════════════════════
+   COMPOSITE: NAVIGATION
+   ═══════════════════════════════════════════════════════════ */
+.site-nav {
+  background: white; border-bottom: 1px solid var(--border-default);
+  padding: 0 var(--space-l); display: flex; align-items: center; height: 64px;
+  box-shadow: var(--shadow-xs);
+}
+.site-nav-logo { font-size: 1.3em; font-weight: 800; color: var(--color-primary); text-decoration: none; margin-right: var(--space-xl); }
+.site-nav-links { display: flex; gap: var(--space-l); flex: 1; }
+.site-nav-links a { color: var(--text-secondary); text-decoration: none; font-size: var(--font-size-sm); font-weight: 500; transition: color var(--transition-fast); }
+.site-nav-links a:hover { color: var(--color-primary); }
+.site-nav-trust { display: flex; gap: var(--space-m); align-items: center; margin-left: auto; }
+.trust-badge { display: flex; align-items: center; gap: 4px; font-size: var(--font-size-xs); color: var(--text-secondary); }
+
+/* ═══════════════════════════════════════════════════════════
+   COMPOSITE: SEARCH BAR
+   ═══════════════════════════════════════════════════════════ */
+.search-bar {
+  display: flex; align-items: center; background: white;
+  border: 2px solid var(--border-default); border-radius: var(--radius-pill);
+  padding: var(--space-xxs); transition: border-color var(--transition-fast);
+}
+.search-bar:focus-within { border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(23,127,164,0.1); }
+.search-bar input { border: none; outline: none; flex: 1; padding: var(--space-xs) var(--space-m); font-size: var(--font-size-sm); font-family: var(--font-family); }
+.search-bar .btn { border-radius: var(--radius-pill); }
+
+/* ═══════════════════════════════════════════════════════════
+   COMPOSITE: BOOKING SIDEBAR (BCP)
+   ═══════════════════════════════════════════════════════════ */
+.booking-panel {
+  border: 1px solid var(--border-default); border-radius: var(--radius-l);
+  padding: var(--space-l); background: white; box-shadow: var(--shadow-md);
+  max-width: 360px;
+}
+.booking-price { margin-bottom: var(--space-m); }
+.booking-price .original { text-decoration: line-through; color: var(--text-muted); font-size: var(--font-size-sm); }
+.booking-price .current { font-size: 2em; font-weight: 800; color: var(--text-primary); }
+.booking-price .per { font-size: var(--font-size-sm); color: var(--text-secondary); }
+.room-selector { display: flex; gap: var(--space-xs); margin-bottom: var(--space-m); flex-wrap: wrap; }
+.room-option {
+  flex: 1; min-width: 0; padding: var(--space-xs) var(--space-s); border: 1px solid var(--border-default);
+  border-radius: var(--radius-m); text-align: center; font-size: var(--font-size-xs);
+  cursor: pointer; transition: all var(--transition-fast); background: white;
+}
+.room-option:hover { border-color: var(--color-primary); }
+.room-option.active { background: var(--color-primary-bg); border-color: var(--color-primary); color: var(--color-primary-dark); font-weight: 600; }
+
+/* ═══════════════════════════════════════════════════════════
+   COMPOSITE: FOOTER
+   ═══════════════════════════════════════════════════════════ */
+.site-footer { background: var(--bg-subtle); padding: var(--space-xxl) var(--space-l) var(--space-l); }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--space-xl); margin-bottom: var(--space-xl); }
+.footer-col h4 { font-size: var(--font-size-sm); font-weight: 700; margin-bottom: var(--space-s); color: var(--text-primary); }
+.footer-col a { display: block; font-size: var(--font-size-xs); color: var(--text-secondary); text-decoration: none; margin-bottom: var(--space-xs); }
+.footer-col a:hover { color: var(--color-primary); }
+.footer-bottom { border-top: 1px solid var(--border-default); padding-top: var(--space-m); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-m); }
+.footer-bottom-links { display: flex; gap: var(--space-m); }
+.footer-bottom-links a { font-size: var(--font-size-xs); color: var(--text-muted); text-decoration: none; }
+.footer-social { display: flex; gap: var(--space-s); }
+.footer-social a { width: 32px; height: 32px; border-radius: 50%; background: var(--color-grey-20); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: background var(--transition-fast); }
+.footer-social a:hover { background: var(--color-primary); color: white; }
+
+/* ═══════════════════════════════════════════════════════════
+   COMPOSITE: REVIEW CARD
+   ═══════════════════════════════════════════════════════════ */
+.review-card { border: 1px solid var(--border-default); border-radius: var(--radius-m); padding: var(--space-m); }
+.review-header { display: flex; align-items: center; gap: var(--space-s); margin-bottom: var(--space-s); }
+.review-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--color-primary-bg); display: flex; align-items: center; justify-content: center; color: var(--color-primary); font-weight: 700; font-size: var(--font-size-sm); }
+.review-name { font-weight: 600; font-size: var(--font-size-sm); }
+.review-date { font-size: var(--font-size-xs); color: var(--text-muted); }
+.review-text { font-size: var(--font-size-sm); color: var(--text-secondary); line-height: var(--line-height-relaxed); }
+
+/* ═══════════════════════════════════════════════════════════
+   COMPOSITE: ITINERARY DAY
+   ═══════════════════════════════════════════════════════════ */
+.itinerary-day { border: 1px solid var(--border-default); border-radius: var(--radius-m); margin-bottom: var(--space-xs); overflow: hidden; }
+.itinerary-header { display: flex; align-items: center; gap: var(--space-m); padding: var(--space-m); cursor: pointer; user-select: none; }
+.itinerary-header:hover { background: var(--bg-muted); }
+.day-number { background: var(--color-primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: var(--font-size-sm); flex-shrink: 0; }
+.day-title { font-weight: 600; font-size: var(--font-size-sm); }
+.day-subtitle { font-size: var(--font-size-xs); color: var(--text-muted); }
+.itinerary-body { max-height: 0; overflow: hidden; transition: max-height var(--transition-normal); }
+.itinerary-body-inner { padding: 0 var(--space-m) var(--space-m) calc(32px + var(--space-m) + var(--space-m)); font-size: var(--font-size-sm); color: var(--text-secondary); line-height: var(--line-height-relaxed); }
+.itinerary-day.open .itinerary-body { max-height: 300px; }
+.itinerary-meals { display: flex; gap: var(--space-xs); margin-bottom: var(--space-xs); }
+.meal-badge { font-size: 11px; padding: 2px 8px; background: var(--color-green-10); color: var(--color-green-70); border-radius: var(--radius-pill); }
+
+/* ═══════════════════════════════════════════════════════════
+   COMPOSITE: AVAILABILITY TABLE
+   ═══════════════════════════════════════════════════════════ */
+.avail-table { width: 100%; border-collapse: collapse; font-size: var(--font-size-sm); }
+.avail-table th { text-align: left; padding: var(--space-s) var(--space-m); border-bottom: 2px solid var(--border-default); font-weight: 600; color: var(--text-secondary); font-size: var(--font-size-xs); text-transform: uppercase; }
+.avail-table td { padding: var(--space-s) var(--space-m); border-bottom: 1px solid var(--border-light); }
+.avail-table tr:hover td { background: var(--bg-muted); }
+.avail-status { font-size: var(--font-size-xs); font-weight: 600; }
+.avail-status.filling { color: var(--color-warning); }
+.avail-status.almost-sold { color: var(--color-error); }
+.avail-status.available { color: var(--color-success); }
+
+/* ═══════════════════════════════════════════════════════════
+   COMPOSITE: OPERATOR CARD
+   ═══════════════════════════════════════════════════════════ */
+.operator-card { border: 1px solid var(--border-default); border-radius: var(--radius-l); padding: var(--space-l); display: flex; gap: var(--space-m); align-items: flex-start; }
+.operator-logo { width: 64px; height: 64px; border-radius: var(--radius-m); background: var(--bg-muted); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--color-primary); flex-shrink: 0; }
+.operator-info h3 { font-size: 1em; font-weight: 600; margin-bottom: var(--space-xxs); }
+.operator-badges { display: flex; gap: var(--space-xs); margin-top: var(--space-xs); flex-wrap: wrap; }
+
+/* ═══════════════════════════════════════════════════════════
+   PAGE: HERO SECTION
+   ═══════════════════════════════════════════════════════════ */
+.hero {
+  background: linear-gradient(135deg, var(--color-teal-90), var(--color-teal-70));
+  color: white; padding: var(--space-xxl) var(--space-xl);
+  border-radius: var(--radius-l); margin-bottom: var(--space-xl);
+}
+.hero h2 { font-size: var(--font-size-h1); font-weight: 800; margin-bottom: var(--space-s); font-family: var(--font-family-display); }
+.hero p { font-size: 1.1em; opacity: 0.9; margin-bottom: var(--space-m); max-width: 600px; }
+.hero .breadcrumb a { color: rgba(255,255,255,0.7); }
+.hero .breadcrumb .sep { color: rgba(255,255,255,0.5); }
+.hero .breadcrumb .current { color: white; }
+.hero .breadcrumb { margin-bottom: var(--space-m); }
+
+/* ═══════════════════════════════════════════════════════════
+   UTILITY
+   ═══════════════════════════════════════════════════════════ */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-m); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-m); }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-m); }
+.flex-center { display: flex; align-items: center; gap: var(--space-s); }
+.mt-s { margin-top: var(--space-s); }
+.mt-m { margin-top: var(--space-m); }
+.mb-m { margin-bottom: var(--space-m); }
+.text-sm { font-size: var(--font-size-sm); }
+.text-xs { font-size: var(--font-size-xs); }
+.text-muted { color: var(--text-muted); }
+.fw-600 { font-weight: 600; }
+
+/* ═══════════════════════════════════════════════════════════
+   CODE SNIPPETS
+   ═══════════════════════════════════════════════════════════ */
+.code-toggle { font-size: var(--font-size-xs); color: var(--color-primary); cursor: pointer; background: none; border: none; font-family: var(--font-family); margin-top: var(--space-xs); }
+.code-block { display: none; background: var(--color-grey-100); color: #e2e8f0; padding: var(--space-m); border-radius: var(--radius-m); font-family: 'SF Mono', Monaco, Consolas, monospace; font-size: 12px; overflow-x: auto; margin-top: var(--space-xs); white-space: pre; line-height: 1.6; }
+.code-block.open { display: block; }
+
+@media (max-width: 768px) {
+  .ds-sidebar { display: none; }
+  .ds-main { max-width: 100%; padding: var(--space-m); }
+  .grid-3, .grid-4 { grid-template-columns: 1fr 1fr; }
+}
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════
+     HEADER
+     ════════════════════════════════════════════════════════════ -->
+<header class="ds-header">
+  <h1>SCOUT Design System</h1>
+  <span class="badge">TourRadar Component Library</span>
+</header>
+
+<div class="ds-layout">
+
+<!-- ════════════════════════════════════════════════════════════
+     SIDEBAR NAVIGATION
+     ════════════════════════════════════════════════════════════ -->
+<nav class="ds-sidebar">
+  <div class="nav-group">Foundations</div>
+  <a href="#colors" class="sub">Colors</a>
+  <a href="#typography" class="sub">Typography</a>
+  <a href="#spacing" class="sub">Spacing</a>
+  <a href="#elevation" class="sub">Elevation</a>
+  <a href="#border-radius" class="sub">Border Radius</a>
+
+  <div class="nav-group">UI Elements</div>
+  <a href="#buttons" class="sub">Buttons</a>
+  <a href="#badges" class="sub">Badges &amp; Tags</a>
+  <a href="#inputs" class="sub">Input Fields</a>
+  <a href="#selection" class="sub">Selection Controls</a>
+  <a href="#ratings" class="sub">Ratings</a>
+  <a href="#accordion" class="sub">Accordion</a>
+  <a href="#tabs-section" class="sub">Tabs</a>
+  <a href="#dropdowns" class="sub">Dropdowns</a>
+  <a href="#alerts" class="sub">Alerts</a>
+  <a href="#tooltips" class="sub">Tooltips</a>
+  <a href="#breadcrumbs" class="sub">Breadcrumbs</a>
+  <a href="#lists" class="sub">Lists</a>
+  <a href="#modal-section" class="sub">Modal</a>
+
+  <div class="nav-group">Components</div>
+  <a href="#tour-cards" class="sub">Tour Cards</a>
+  <a href="#navigation" class="sub">Navigation</a>
+  <a href="#search-bar" class="sub">Search Bar</a>
+  <a href="#booking-panel" class="sub">Booking Panel</a>
+  <a href="#operator-card" class="sub">Operator Card</a>
+  <a href="#review-cards" class="sub">Review Cards</a>
+  <a href="#footer-section" class="sub">Footer</a>
+
+  <div class="nav-group">Page Compositions</div>
+  <a href="#hero-section" class="sub">Hero Section</a>
+  <a href="#itinerary" class="sub">Itinerary</a>
+  <a href="#availability" class="sub">Availability Table</a>
+</nav>
+
+<!-- ════════════════════════════════════════════════════════════
+     MAIN CONTENT
+     ════════════════════════════════════════════════════════════ -->
+<main class="ds-main">
+
+<!-- ──────────── COLORS ──────────── -->
+<section id="colors" class="ds-section">
+  <h2 class="ds-section-title">Colors</h2>
+  <p class="ds-section-desc">The Scout Spectrum provides a comprehensive color palette with semantic roles for UI, status, and brand communication.</p>
+
+  <div class="ds-subsection">
+    <h3 class="ds-subsection-title">UI Colors</h3>
+    <div class="ds-component-row">
+      <div class="color-swatch" style="width:140px"><div class="color-swatch-block" style="background:var(--color-primary)"></div><div class="color-swatch-label">Primary<code>#177FA4</code></div></div>
+      <div class="color-swatch" style="width:140px"><div class="color-swatch-block" style="background:var(--color-primary-dark)"></div><div class="color-swatch-label">Primary Dark<code>#0E6D8D</code></div></div>
+      <div class="color-swatch" style="width:140px"><div class="color-swatch-block" style="background:var(--color-primary-light)"></div><div class="color-swatch-label">Primary Light<code>#409CD1</code></div></div>
+      <div class="color-swatch" style="width:140px"><div class="color-swatch-block" style="background:var(--color-accent)"></div><div class="color-swatch-label">Accent<code>#7B61FF</code></div></div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <h3 class="ds-subsection-title">Semantic Colors</h3>
+    <div class="ds-component-row">
+      <div class="color-swatch" style="width:140px"><div class="color-swatch-block" style="background:var(--color-info)"></div><div class="color-swatch-label">Info<code>#3B82F6</code></div></div>
+      <div class="color-swatch" style="width:140px"><div class="color-swatch-block" style="background:var(--color-warning)"></div><div class="color-swatch-label">Warning<code>#FCA336</code></div></div>
+      <div class="color-swatch" style="width:140px"><div class="color-swatch-block" style="background:var(--color-error)"></div><div class="color-swatch-label">Error<code>#E22B2C</code></div></div>
+      <div class="color-swatch" style="width:140px"><div class="color-swatch-block" style="background:var(--color-success)"></div><div class="color-swatch-label">Success<code>#10B981</code></div></div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <h3 class="ds-subsection-title">Scout Spectrum - Teal</h3>
+    <div class="color-row">
+      <div class="chip" style="background:var(--color-teal-10)" title="teal-10"></div>
+      <div class="chip" style="background:var(--color-teal-20)" title="teal-20"></div>
+      <div class="chip" style="background:var(--color-teal-30)" title="teal-30"></div>
+      <div class="chip" style="background:var(--color-teal-40)" title="teal-40"></div>
+      <div class="chip" style="background:var(--color-teal-50)" title="teal-50"></div>
+      <div class="chip" style="background:var(--color-teal-60)" title="teal-60"></div>
+      <div class="chip" style="background:var(--color-teal-70)" title="teal-70"></div>
+      <div class="chip" style="background:var(--color-teal-80)" title="teal-80"></div>
+      <div class="chip" style="background:var(--color-teal-90)" title="teal-90"></div>
+      <div class="chip" style="background:var(--color-teal-100)" title="teal-100"></div>
+    </div>
+    <h3 class="ds-subsection-title" style="margin-top:var(--space-m)">Scout Spectrum - Blue</h3>
+    <div class="color-row">
+      <div class="chip" style="background:var(--color-blue-10)"></div><div class="chip" style="background:var(--color-blue-20)"></div>
+      <div class="chip" style="background:var(--color-blue-30)"></div><div class="chip" style="background:var(--color-blue-40)"></div>
+      <div class="chip" style="background:var(--color-blue-50)"></div><div class="chip" style="background:var(--color-blue-60)"></div>
+      <div class="chip" style="background:var(--color-blue-70)"></div><div class="chip" style="background:var(--color-blue-80)"></div>
+      <div class="chip" style="background:var(--color-blue-90)"></div><div class="chip" style="background:var(--color-blue-100)"></div>
+    </div>
+    <h3 class="ds-subsection-title" style="margin-top:var(--space-m)">Scout Spectrum - Red</h3>
+    <div class="color-row">
+      <div class="chip" style="background:var(--color-red-10)"></div><div class="chip" style="background:var(--color-red-20)"></div>
+      <div class="chip" style="background:var(--color-red-30)"></div><div class="chip" style="background:var(--color-red-40)"></div>
+      <div class="chip" style="background:var(--color-red-50)"></div><div class="chip" style="background:var(--color-red-60)"></div>
+      <div class="chip" style="background:var(--color-red-70)"></div><div class="chip" style="background:var(--color-red-80)"></div>
+      <div class="chip" style="background:var(--color-red-90)"></div><div class="chip" style="background:var(--color-red-100)"></div>
+    </div>
+    <h3 class="ds-subsection-title" style="margin-top:var(--space-m)">Scout Spectrum - Green</h3>
+    <div class="color-row">
+      <div class="chip" style="background:var(--color-green-10)"></div><div class="chip" style="background:var(--color-green-20)"></div>
+      <div class="chip" style="background:var(--color-green-30)"></div><div class="chip" style="background:var(--color-green-40)"></div>
+      <div class="chip" style="background:var(--color-green-50)"></div><div class="chip" style="background:var(--color-green-60)"></div>
+      <div class="chip" style="background:var(--color-green-70)"></div><div class="chip" style="background:var(--color-green-80)"></div>
+      <div class="chip" style="background:var(--color-green-90)"></div><div class="chip" style="background:var(--color-green-100)"></div>
+    </div>
+    <h3 class="ds-subsection-title" style="margin-top:var(--space-m)">Scout Spectrum - Orange &amp; Amber</h3>
+    <div class="color-row">
+      <div class="chip" style="background:var(--color-orange-10)"></div><div class="chip" style="background:var(--color-orange-30)"></div>
+      <div class="chip" style="background:var(--color-orange-50)"></div><div class="chip" style="background:var(--color-orange-60)"></div>
+      <div class="chip" style="background:var(--color-orange-80)"></div><div class="chip" style="background:var(--color-orange-100)"></div>
+      <div class="chip" style="background:var(--color-amber-30)"></div><div class="chip" style="background:var(--color-amber-50)"></div>
+      <div class="chip" style="background:var(--color-amber-70)"></div><div class="chip" style="background:var(--color-amber-90)"></div>
+    </div>
+    <h3 class="ds-subsection-title" style="margin-top:var(--space-m)">Neutrals</h3>
+    <div class="color-row">
+      <div class="chip" style="background:var(--color-grey-0);border:1px solid #e3e5e6"></div>
+      <div class="chip" style="background:var(--color-grey-10)"></div><div class="chip" style="background:var(--color-grey-20)"></div>
+      <div class="chip" style="background:var(--color-grey-30)"></div><div class="chip" style="background:var(--color-grey-40)"></div>
+      <div class="chip" style="background:var(--color-grey-50)"></div><div class="chip" style="background:var(--color-grey-60)"></div>
+      <div class="chip" style="background:var(--color-grey-70)"></div><div class="chip" style="background:var(--color-grey-80)"></div>
+      <div class="chip" style="background:var(--color-grey-90)"></div><div class="chip" style="background:var(--color-grey-100)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── TYPOGRAPHY ──────────── -->
+<section id="typography" class="ds-section">
+  <h2 class="ds-section-title">Typography</h2>
+  <p class="ds-section-desc">Major Third scale (1.250) with 16px base. Font: Helvetica / Inter for display.</p>
+  <div class="type-sample"><h1 style="font-size:var(--font-size-h1)">Heading 1 (2.441em / 39px)</h1><div class="meta">--font-size-h1 | font-weight: 700</div></div>
+  <div class="type-sample"><h2 style="font-size:var(--font-size-h2)">Heading 2 (1.953em / 31px)</h2><div class="meta">--font-size-h2 | font-weight: 700</div></div>
+  <div class="type-sample"><h3 style="font-size:var(--font-size-h3)">Heading 3 (1.563em / 25px)</h3><div class="meta">--font-size-h3 | font-weight: 700</div></div>
+  <div class="type-sample"><h4 style="font-size:var(--font-size-h4)">Heading 4 (1.25em / 20px)</h4><div class="meta">--font-size-h4 | font-weight: 600</div></div>
+  <div class="type-sample"><h5 style="font-size:var(--font-size-h5)">Heading 5 (1em / 16px)</h5><div class="meta">--font-size-h5 | font-weight: 600</div></div>
+  <div class="type-sample"><p style="font-size:var(--font-size-body)">Body regular (1em / 16px) - The quick brown fox jumps over the lazy dog.</p><div class="meta">--font-size-body | font-weight: 400</div></div>
+  <div class="type-sample"><p style="font-size:var(--font-size-sm)">Body small (0.875em / 14px) - The quick brown fox jumps over the lazy dog.</p><div class="meta">--font-size-sm | font-weight: 400</div></div>
+  <div class="type-sample"><p style="font-size:var(--font-size-xs)">Body tiny (0.75em / 12px) - The quick brown fox jumps over the lazy dog.</p><div class="meta">--font-size-xs | font-weight: 400</div></div>
+</section>
+
+<!-- ──────────── SPACING ──────────── -->
+<section id="spacing" class="ds-section">
+  <h2 class="ds-section-title">Spacing</h2>
+  <p class="ds-section-desc">Consistent spacing scale from 2px to 96px.</p>
+  <div class="spacing-row"><span class="spacing-label">XXXS (2px)</span><div class="spacing-bar" style="width:2px"></div></div>
+  <div class="spacing-row"><span class="spacing-label">XXS (4px)</span><div class="spacing-bar" style="width:4px"></div></div>
+  <div class="spacing-row"><span class="spacing-label">XS (8px)</span><div class="spacing-bar" style="width:8px"></div></div>
+  <div class="spacing-row"><span class="spacing-label">S (12px)</span><div class="spacing-bar" style="width:12px"></div></div>
+  <div class="spacing-row"><span class="spacing-label">M (16px)</span><div class="spacing-bar" style="width:16px"></div></div>
+  <div class="spacing-row"><span class="spacing-label">L (24px)</span><div class="spacing-bar" style="width:24px"></div></div>
+  <div class="spacing-row"><span class="spacing-label">XL (32px)</span><div class="spacing-bar" style="width:32px"></div></div>
+  <div class="spacing-row"><span class="spacing-label">XXL (48px)</span><div class="spacing-bar" style="width:48px"></div></div>
+  <div class="spacing-row"><span class="spacing-label">XXXL (64px)</span><div class="spacing-bar" style="width:64px"></div></div>
+  <div class="spacing-row"><span class="spacing-label">XXXXL (80px)</span><div class="spacing-bar" style="width:80px"></div></div>
+  <div class="spacing-row"><span class="spacing-label">XXXXXL (96px)</span><div class="spacing-bar" style="width:96px"></div></div>
+</section>
+
+<!-- ──────────── ELEVATION ──────────── -->
+<section id="elevation" class="ds-section">
+  <h2 class="ds-section-title">Elevation</h2>
+  <p class="ds-section-desc">Shadow levels to convey depth hierarchy.</p>
+  <div class="elevation-grid">
+    <div class="elevation-card" style="box-shadow:var(--shadow-xs)">XS</div>
+    <div class="elevation-card" style="box-shadow:var(--shadow-sm)">SM</div>
+    <div class="elevation-card" style="box-shadow:var(--shadow-md)">MD</div>
+    <div class="elevation-card" style="box-shadow:var(--shadow-lg)">LG</div>
+    <div class="elevation-card" style="box-shadow:var(--shadow-xl)">XL</div>
+  </div>
+</section>
+
+<!-- ──────────── BORDER RADIUS ──────────── -->
+<section id="border-radius" class="ds-section">
+  <h2 class="ds-section-title">Border Radius</h2>
+  <p class="ds-section-desc">From Figma SCOUT variables. Values from XS (5px) to Pill (9999px).</p>
+  <div class="radius-grid">
+    <div class="radius-sample" style="border-radius:var(--radius-xs)">XS 5px</div>
+    <div class="radius-sample" style="border-radius:var(--radius-s)">S 7px</div>
+    <div class="radius-sample" style="border-radius:var(--radius-m)">M 9px</div>
+    <div class="radius-sample" style="border-radius:var(--radius-l)">L 11px</div>
+    <div class="radius-sample" style="border-radius:var(--radius-xl)">XL 13px</div>
+    <div class="radius-sample" style="border-radius:var(--radius-xxl)">XXL 15px</div>
+    <div class="radius-sample" style="border-radius:var(--radius-xxxl)">XXXL 19px</div>
+    <div class="radius-sample" style="border-radius:var(--radius-pill)">Pill</div>
+  </div>
+</section>
+
+<!-- ──────────── BUTTONS ──────────── -->
+<section id="buttons" class="ds-section">
+  <h2 class="ds-section-title">Buttons</h2>
+  <p class="ds-section-desc">All button variants with sizes and states.</p>
+  <div class="ds-subsection">
+    <h3 class="ds-subsection-title">Variants</h3>
+    <div class="ds-component-row">
+      <button class="btn btn-md btn-primary">Primary</button>
+      <button class="btn btn-md btn-secondary">Secondary</button>
+      <button class="btn btn-md btn-outline">Outline</button>
+      <button class="btn btn-md btn-text">Text</button>
+      <button class="btn btn-md btn-danger">Danger</button>
+    </div>
+  </div>
+  <div class="ds-subsection">
+    <h3 class="ds-subsection-title">Sizes</h3>
+    <div class="ds-component-row" style="align-items:center">
+      <button class="btn btn-sm btn-primary">Small</button>
+      <button class="btn btn-md btn-primary">Medium</button>
+      <button class="btn btn-lg btn-primary">Large</button>
+    </div>
+  </div>
+  <div class="ds-subsection">
+    <h3 class="ds-subsection-title">States</h3>
+    <div class="ds-component-row">
+      <button class="btn btn-md btn-primary">Default</button>
+      <button class="btn btn-md btn-primary" disabled>Disabled</button>
+      <button class="btn btn-md btn-primary btn-loading">Loading</button>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── BADGES & TAGS ──────────── -->
+<section id="badges" class="ds-section">
+  <h2 class="ds-section-title">Badges &amp; Tags</h2>
+  <div class="ds-subsection">
+    <h3 class="ds-subsection-title">Badges</h3>
+    <div class="ds-component-row">
+      <span class="badge-el badge-primary">Primary</span>
+      <span class="badge-el badge-success">Success</span>
+      <span class="badge-el badge-warning">Warning</span>
+      <span class="badge-el badge-danger">Error</span>
+      <span class="badge-el badge-info">Info</span>
+      <span class="badge-el badge-neutral">Neutral</span>
+    </div>
+    <div class="ds-component-row" style="margin-top:var(--space-s)">
+      <span class="badge-discount">-25%</span>
+      <span class="badge-el badge-count badge-danger" style="background:var(--color-error);color:white">5</span>
+      <span class="badge-el badge-success">&#10003; Verified</span>
+      <span class="badge-el badge-primary">Explorer</span>
+      <span class="badge-el badge-neutral">14 days</span>
+    </div>
+  </div>
+  <div class="ds-subsection">
+    <h3 class="ds-subsection-title">Tags</h3>
+    <div class="ds-component-row">
+      <span class="tag">Italy</span>
+      <span class="tag">France</span>
+      <span class="tag tag-active">Europe</span>
+      <span class="tag">Spain <span class="tag-remove" onclick="this.parentElement.remove()">&#10005;</span></span>
+      <span class="tag">Germany <span class="tag-remove" onclick="this.parentElement.remove()">&#10005;</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── INPUT FIELDS ──────────── -->
+<section id="inputs" class="ds-section">
+  <h2 class="ds-section-title">Input Fields</h2>
+  <div class="grid-2">
+    <div class="form-group"><label class="form-label">Text Input</label><input type="text" class="form-input" placeholder="Enter destination..."></div>
+    <div class="form-group"><label class="form-label">Disabled Input</label><input type="text" class="form-input" disabled value="Disabled field"></div>
+    <div class="form-group"><label class="form-label">Error State</label><input type="text" class="form-input error" value="Invalid input"><div class="form-error">Please enter a valid email address.</div></div>
+    <div class="form-group"><label class="form-label">With Hint</label><input type="text" class="form-input" placeholder="e.g. Europe"><div class="form-hint">Search by destination, tour name, or operator.</div></div>
+    <div class="form-group"><label class="form-label">Select</label><select class="form-input form-select"><option>Choose an option...</option><option>Budget</option><option>Mid-Range</option><option>Luxury</option></select></div>
+    <div class="form-group"><label class="form-label">Textarea</label><textarea class="form-input" placeholder="Tell us about your travel preferences..." rows="3"></textarea></div>
+  </div>
+</section>
+
+<!-- ──────────── SELECTION CONTROLS ──────────── -->
+<section id="selection" class="ds-section">
+  <h2 class="ds-section-title">Selection Controls</h2>
+  <div class="grid-3">
+    <div>
+      <div class="ds-label">Checkboxes</div>
+      <label class="form-check"><input type="checkbox" checked> Breakfast included</label>
+      <label class="form-check"><input type="checkbox"> Airport transfer</label>
+      <label class="form-check"><input type="checkbox"> Travel insurance</label>
+    </div>
+    <div>
+      <div class="ds-label">Radio Buttons</div>
+      <label class="form-check"><input type="radio" name="room" checked> Shared Room</label>
+      <label class="form-check"><input type="radio" name="room"> Private Single</label>
+      <label class="form-check"><input type="radio" name="room"> Private Double</label>
+    </div>
+    <div>
+      <div class="ds-label">Toggles</div>
+      <div class="flex-center mb-m"><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label><span class="text-sm">Notifications</span></div>
+      <div class="flex-center mb-m"><label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label><span class="text-sm">Dark mode</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── RATINGS ──────────── -->
+<section id="ratings" class="ds-section">
+  <h2 class="ds-section-title">Ratings</h2>
+  <div class="ds-component-row">
+    <div><div class="ds-label">5 Stars</div><div class="rating"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="rating-text">5.0</span></div></div>
+    <div><div class="ds-label">4.5 Stars</div><div class="rating"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star half">&#9733;</span><span class="rating-text">4.5 (288 reviews)</span></div></div>
+    <div><div class="ds-label">3 Stars</div><div class="rating"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star empty">&#9733;</span><span class="star empty">&#9733;</span><span class="rating-text">3.0</span></div></div>
+    <div><div class="ds-label">Large</div><div class="rating rating-lg"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star half">&#9733;</span><span class="rating-text">4.6</span></div></div>
+  </div>
+</section>
+
+<!-- ──────────── ACCORDION ──────────── -->
+<section id="accordion" class="ds-section">
+  <h2 class="ds-section-title">Accordion</h2>
+  <div class="accordion" style="max-width:600px">
+    <div class="accordion-item open"><div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">What's included?<span class="accordion-icon">&#9662;</span></div><div class="accordion-body"><div class="accordion-body-inner">Accommodation in comfortable hotels, daily breakfast, professional English-speaking guide, all transport between destinations, and airport transfers on day 1 and the last day.</div></div></div>
+    <div class="accordion-item"><div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">Cancellation policy<span class="accordion-icon">&#9662;</span></div><div class="accordion-body"><div class="accordion-body-inner">Free cancellation up to 30 days before departure. 50% refund for cancellations 15-29 days before. No refund for cancellations within 14 days of departure.</div></div></div>
+    <div class="accordion-item"><div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">Visa requirements<span class="accordion-icon">&#9662;</span></div><div class="accordion-body"><div class="accordion-body-inner">Most EU citizens do not need a visa. Citizens of the US, Canada, Australia, and NZ can enter visa-free for up to 90 days. Check with your local embassy for specific requirements.</div></div></div>
+  </div>
+</section>
+
+<!-- ──────────── TABS ──────────── -->
+<section id="tabs-section" class="ds-section">
+  <h2 class="ds-section-title">Tabs</h2>
+  <div style="max-width:600px">
+    <div class="tabs" id="demo-tabs">
+      <button class="tab-btn active" data-tab="overview">Overview</button>
+      <button class="tab-btn" data-tab="itinerary-tab">Itinerary</button>
+      <button class="tab-btn" data-tab="reviews-tab">Reviews</button>
+      <button class="tab-btn" data-tab="faq-tab">FAQ</button>
+    </div>
+    <div class="tab-panel active" id="overview">Tour overview content with key highlights, included activities, and destination information.</div>
+    <div class="tab-panel" id="itinerary-tab">Day-by-day itinerary with detailed descriptions of each stop and activity along the route.</div>
+    <div class="tab-panel" id="reviews-tab">Traveler reviews and ratings from verified past participants of this tour.</div>
+    <div class="tab-panel" id="faq-tab">Frequently asked questions about the tour, booking, and travel requirements.</div>
+  </div>
+</section>
+
+<!-- ──────────── DROPDOWNS ──────────── -->
+<section id="dropdowns" class="ds-section">
+  <h2 class="ds-section-title">Dropdowns</h2>
+  <div class="ds-component-row">
+    <div class="dropdown" id="demo-dropdown">
+      <button class="btn btn-md btn-secondary dropdown-trigger" onclick="this.parentElement.classList.toggle('open')">Language &#9662;</button>
+      <div class="dropdown-menu">
+        <div class="dropdown-item" onclick="this.closest('.dropdown').classList.remove('open')">English</div>
+        <div class="dropdown-item" onclick="this.closest('.dropdown').classList.remove('open')">Deutsch</div>
+        <div class="dropdown-item" onclick="this.closest('.dropdown').classList.remove('open')">Fran&ccedil;ais</div>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-item" onclick="this.closest('.dropdown').classList.remove('open')">Espa&ntilde;ol</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── ALERTS ──────────── -->
+<section id="alerts" class="ds-section">
+  <h2 class="ds-section-title">Alerts / Messaging</h2>
+  <div style="max-width:600px; display:flex; flex-direction:column; gap:var(--space-s)">
+    <div class="alert alert-info"><span class="alert-icon">&#8505;</span><div>This tour departs from London. Make sure to arrive at the meeting point by 8:00 AM.</div><button class="alert-close" onclick="this.parentElement.remove()">&#10005;</button></div>
+    <div class="alert alert-success"><span class="alert-icon">&#10003;</span><div>Your booking has been confirmed! Check your email for the travel documents.</div><button class="alert-close" onclick="this.parentElement.remove()">&#10005;</button></div>
+    <div class="alert alert-warning"><span class="alert-icon">&#9888;</span><div>Only 3 spots remaining for this departure date. Book soon to secure your place!</div><button class="alert-close" onclick="this.parentElement.remove()">&#10005;</button></div>
+    <div class="alert alert-error"><span class="alert-icon">&#10007;</span><div>Payment could not be processed. Please check your card details and try again.</div><button class="alert-close" onclick="this.parentElement.remove()">&#10005;</button></div>
+  </div>
+</section>
+
+<!-- ──────────── TOOLTIPS ──────────── -->
+<section id="tooltips" class="ds-section">
+  <h2 class="ds-section-title">Tooltips</h2>
+  <div class="ds-component-row" style="gap:var(--space-xl);padding:var(--space-xl) 0">
+    <span class="tooltip-wrap tooltip-top"><button class="btn btn-sm btn-secondary">Hover me (top)</button><span class="tooltip-content">Tooltip on top</span></span>
+    <span class="tooltip-wrap tooltip-bottom"><button class="btn btn-sm btn-secondary">Hover me (bottom)</button><span class="tooltip-content">Tooltip on bottom</span></span>
+  </div>
+</section>
+
+<!-- ──────────── BREADCRUMBS ──────────── -->
+<section id="breadcrumbs" class="ds-section">
+  <h2 class="ds-section-title">Breadcrumbs</h2>
+  <nav class="breadcrumb"><a href="#">Home</a><span class="sep">&#8250;</span><a href="#">Europe Tours</a><span class="sep">&#8250;</span><a href="#">Western Europe</a><span class="sep">&#8250;</span><span class="current">Classic Europe</span></nav>
+</section>
+
+<!-- ──────────── LISTS ──────────── -->
+<section id="lists" class="ds-section">
+  <h2 class="ds-section-title">Lists</h2>
+  <div class="list" style="max-width:400px">
+    <div class="list-item selected" onclick="this.parentElement.querySelectorAll('.list-item').forEach(i=>i.classList.remove('selected'));this.classList.add('selected')">&#9733; Top Rated Tours</div>
+    <div class="list-item" onclick="this.parentElement.querySelectorAll('.list-item').forEach(i=>i.classList.remove('selected'));this.classList.add('selected')">&#128176; Budget Friendly</div>
+    <div class="list-item" onclick="this.parentElement.querySelectorAll('.list-item').forEach(i=>i.classList.remove('selected'));this.classList.add('selected')">&#9202; Last Minute Deals</div>
+    <div class="list-item" onclick="this.parentElement.querySelectorAll('.list-item').forEach(i=>i.classList.remove('selected'));this.classList.add('selected')">&#127758; New Destinations</div>
+  </div>
+</section>
+
+<!-- ──────────── MODAL ──────────── -->
+<section id="modal-section" class="ds-section">
+  <h2 class="ds-section-title">Modal</h2>
+  <button class="btn btn-md btn-primary" onclick="document.getElementById('demo-modal').classList.add('open')">Open Modal</button>
+  <div class="modal-overlay" id="demo-modal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal">
+      <div class="modal-header"><h3 class="modal-title">Contact Operator</h3><button class="modal-close" onclick="document.getElementById('demo-modal').classList.remove('open')">&#10005;</button></div>
+      <div class="modal-body">
+        <div class="form-group"><label class="form-label">Your Name</label><input type="text" class="form-input" placeholder="Full name"></div>
+        <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="email@example.com"></div>
+        <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" rows="3" placeholder="Ask about this tour..."></textarea></div>
+      </div>
+      <div class="modal-footer"><button class="btn btn-md btn-secondary" onclick="document.getElementById('demo-modal').classList.remove('open')">Cancel</button><button class="btn btn-md btn-primary">Send Message</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     COMPOSITE COMPONENTS
+     ════════════════════════════════════════════════════════════ -->
+
+<!-- ──────────── TOUR CARDS ──────────── -->
+<section id="tour-cards" class="ds-section">
+  <h2 class="ds-section-title">Tour Cards</h2>
+  <p class="ds-section-desc">Primary content card used on search results and destination pages.</p>
+  <div class="grid-3">
+    <div class="tour-card">
+      <div class="tour-card-img"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=400&h=250&fit=crop" alt="Paris"><span class="badge-discount">-25%</span></div>
+      <div class="tour-card-body">
+        <div class="tour-card-rating"><div class="rating"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star half">&#9733;</span></div><span class="text-xs text-muted">288 reviews</span></div>
+        <div class="tour-card-title"><a href="#">Classic Europe - 14 Day Tour</a></div>
+        <div class="tour-card-meta"><span class="tag">Explorer</span><span class="tag">14 days</span><span class="tag">8 countries</span></div>
+        <div class="tour-card-operator">by Expat Explore Travel</div>
+        <div class="tour-card-pricing"><span class="original">&euro;3,545</span><span class="current">&euro;2,645</span><span class="per-person">per person</span></div>
+        <div class="tour-card-actions"><button class="btn btn-sm btn-secondary">Brochure</button><button class="btn btn-sm btn-primary">View Tour</button></div>
+      </div>
+    </div>
+    <div class="tour-card">
+      <div class="tour-card-img"><img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=400&h=250&fit=crop" alt="Venice"></div>
+      <div class="tour-card-body">
+        <div class="tour-card-rating"><div class="rating"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div><span class="text-xs text-muted">154 reviews</span></div>
+        <div class="tour-card-title"><a href="#">Italian Discovery - Rome to Venice</a></div>
+        <div class="tour-card-meta"><span class="tag">In-depth Cultural</span><span class="tag">10 days</span></div>
+        <div class="tour-card-operator">by Trafalgar</div>
+        <div class="tour-card-pricing"><span class="current">&euro;1,890</span><span class="per-person">per person</span></div>
+        <div class="tour-card-actions"><button class="btn btn-sm btn-secondary">Brochure</button><button class="btn btn-sm btn-primary">View Tour</button></div>
+      </div>
+    </div>
+    <div class="tour-card">
+      <div class="tour-card-img"><img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=400&h=250&fit=crop" alt="Germany"><span class="badge-discount">-15%</span></div>
+      <div class="tour-card-body">
+        <div class="tour-card-rating"><div class="rating"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star empty">&#9733;</span></div><span class="text-xs text-muted">92 reviews</span></div>
+        <div class="tour-card-title"><a href="#">Rhine River Cruise Adventure</a></div>
+        <div class="tour-card-meta"><span class="tag">River Cruise</span><span class="tag">7 days</span></div>
+        <div class="tour-card-operator">by Avalon Waterways</div>
+        <div class="tour-card-pricing"><span class="original">&euro;2,200</span><span class="current">&euro;1,870</span><span class="per-person">per person</span></div>
+        <div class="tour-card-actions"><button class="btn btn-sm btn-secondary">Brochure</button><button class="btn btn-sm btn-primary">View Tour</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── NAVIGATION ──────────── -->
+<section id="navigation" class="ds-section">
+  <h2 class="ds-section-title">Navigation</h2>
+  <nav class="site-nav">
+    <a href="#" class="site-nav-logo">tourradar</a>
+    <div class="site-nav-links">
+      <a href="#">Destinations</a><a href="#">Adventure Styles</a><a href="#">Deals</a><a href="#">Contact</a>
+    </div>
+    <div class="site-nav-trust">
+      <span class="trust-badge">&#127970; 2,500 operators</span>
+      <span class="trust-badge">&#9733; 4.6 (9,913 reviews)</span>
+      <span class="trust-badge">&#128222; 24/7 support</span>
+    </div>
+  </nav>
+</section>
+
+<!-- ──────────── SEARCH BAR ──────────── -->
+<section id="search-bar" class="ds-section">
+  <h2 class="ds-section-title">Search Bar</h2>
+  <div class="search-bar" style="max-width:600px">
+    <input type="text" placeholder="Where do you want to go?">
+    <button class="btn btn-md btn-primary">Search</button>
+  </div>
+</section>
+
+<!-- ──────────── BOOKING PANEL ──────────── -->
+<section id="booking-panel" class="ds-section">
+  <h2 class="ds-section-title">Booking Panel (BCP)</h2>
+  <div class="booking-panel">
+    <div class="booking-price">
+      <div class="flex-center" style="gap:var(--space-xs)"><span class="original">&euro;3,545</span><span class="badge-discount">-25%</span></div>
+      <div class="current">&euro;2,645</div>
+      <div class="per">per person</div>
+    </div>
+    <div class="ds-label">Room Type</div>
+    <div class="room-selector">
+      <div class="room-option" onclick="this.parentElement.querySelectorAll('.room-option').forEach(o=>o.classList.remove('active'));this.classList.add('active')">Cheapest</div>
+      <div class="room-option active" onclick="this.parentElement.querySelectorAll('.room-option').forEach(o=>o.classList.remove('active'));this.classList.add('active')">Shared</div>
+      <div class="room-option" onclick="this.parentElement.querySelectorAll('.room-option').forEach(o=>o.classList.remove('active'));this.classList.add('active')">Private</div>
+    </div>
+    <div class="form-group"><label class="form-label">Departure Date</label><input type="date" class="form-input"></div>
+    <div class="grid-2" style="margin-bottom:var(--space-m)">
+      <div class="form-group" style="margin-bottom:0"><label class="form-label">Adults</label><select class="form-input form-select"><option>2</option><option>1</option><option>3</option><option>4</option></select></div>
+      <div class="form-group" style="margin-bottom:0"><label class="form-label">Children</label><select class="form-input form-select"><option>0</option><option>1</option><option>2</option></select></div>
+    </div>
+    <button class="btn btn-lg btn-primary" style="width:100%;justify-content:center">Check Availability</button>
+    <div style="text-align:center;margin-top:var(--space-s)"><button class="btn btn-sm btn-text">Save &amp; Compare</button></div>
+  </div>
+</section>
+
+<!-- ──────────── OPERATOR CARD ──────────── -->
+<section id="operator-card" class="ds-section">
+  <h2 class="ds-section-title">Operator Card</h2>
+  <div class="operator-card" style="max-width:500px">
+    <div class="operator-logo">EE</div>
+    <div class="operator-info">
+      <h3>Expat Explore Travel</h3>
+      <div class="rating"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star half">&#9733;</span><span class="rating-text">4.5 (5,764 reviews)</span></div>
+      <div class="operator-badges">
+        <span class="badge-el badge-primary">Platinum Operator</span>
+        <span class="badge-el badge-success">Traveller's Choice</span>
+        <span class="badge-el badge-neutral">81 tours</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── REVIEW CARDS ──────────── -->
+<section id="review-cards" class="ds-section">
+  <h2 class="ds-section-title">Review Cards</h2>
+  <div class="grid-2">
+    <div class="review-card">
+      <div class="review-header"><div class="review-avatar">SK</div><div><div class="review-name">Sarah K.</div><div class="review-date">February 2026</div></div><div style="margin-left:auto"><div class="rating"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div></div></div>
+      <div class="review-text">An absolutely incredible experience! The guide was knowledgeable and friendly, and the itinerary covered all the must-see spots without feeling rushed.</div>
+    </div>
+    <div class="review-card">
+      <div class="review-header"><div class="review-avatar">JM</div><div><div class="review-name">James M.</div><div class="review-date">January 2026</div></div><div style="margin-left:auto"><div class="rating"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star empty">&#9733;</span></div></div></div>
+      <div class="review-text">Great tour overall. Hotels were comfortable and well-located. Only minor issue was the tight schedule on day 5, but everything else was perfect.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── FOOTER ──────────── -->
+<section id="footer-section" class="ds-section">
+  <h2 class="ds-section-title">Footer</h2>
+  <div class="site-footer" style="border-radius:var(--radius-l);overflow:hidden">
+    <div class="footer-grid">
+      <div class="footer-col"><h4>Top Destinations</h4><a href="#">Europe Tours</a><a href="#">Asia Tours</a><a href="#">Africa Tours</a><a href="#">South America Tours</a></div>
+      <div class="footer-col"><h4>Adventure Styles</h4><a href="#">River Cruises</a><a href="#">Hiking Tours</a><a href="#">Cultural Tours</a><a href="#">Safari</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="#">About Us</a><a href="#">Careers</a><a href="#">Press</a><a href="#">Blog</a></div>
+      <div class="footer-col"><h4>Support</h4><a href="#">Help Center</a><a href="#">Contact Us</a><a href="#">Terms</a><a href="#">Privacy Policy</a></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-links"><a href="#">&copy; 2026 TourRadar</a><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+      <div class="footer-social"><a href="#">f</a><a href="#">t</a><a href="#">in</a><a href="#">yt</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     PAGE COMPOSITIONS
+     ════════════════════════════════════════════════════════════ -->
+
+<!-- ──────────── HERO SECTION ──────────── -->
+<section id="hero-section" class="ds-section">
+  <h2 class="ds-section-title">Hero Section</h2>
+  <div class="hero">
+    <nav class="breadcrumb"><a href="#">Home</a><span class="sep">&#8250;</span><span class="current">Europe Tours</span></nav>
+    <h2>Europe Tours &amp; Trips</h2>
+    <p>Discover 14,288 tours across 40+ countries. From river cruises to adventure treks, find your perfect European journey.</p>
+    <button class="btn btn-lg btn-primary" style="background:white;color:var(--color-primary)">View All Tours</button>
+  </div>
+</section>
+
+<!-- ──────────── ITINERARY ──────────── -->
+<section id="itinerary" class="ds-section">
+  <h2 class="ds-section-title">Itinerary</h2>
+  <div style="max-width:700px">
+    <div class="itinerary-day open">
+      <div class="itinerary-header" onclick="this.parentElement.classList.toggle('open')"><span class="day-number">1</span><div><div class="day-title">London Arrival</div><div class="day-subtitle">Welcome meeting &amp; city orientation</div></div><span class="accordion-icon">&#9662;</span></div>
+      <div class="itinerary-body"><div class="itinerary-body-inner"><div class="itinerary-meals"><span class="meal-badge">Dinner</span></div>Arrive in London and check into your hotel. Meet your tour guide and fellow travelers at the welcome reception. Enjoy a brief orientation walk through the city center before a group dinner at a local restaurant.</div></div>
+    </div>
+    <div class="itinerary-day">
+      <div class="itinerary-header" onclick="this.parentElement.classList.toggle('open')"><span class="day-number">2</span><div><div class="day-title">London to Paris</div><div class="day-subtitle">Eurostar &amp; Eiffel Tower visit</div></div><span class="accordion-icon">&#9662;</span></div>
+      <div class="itinerary-body"><div class="itinerary-body-inner"><div class="itinerary-meals"><span class="meal-badge">Breakfast</span><span class="meal-badge">Lunch</span></div>Board the Eurostar train to Paris. After checking into the hotel, enjoy a guided walking tour including the Eiffel Tower, Champs-Elysees, and Arc de Triomphe.</div></div>
+    </div>
+    <div class="itinerary-day">
+      <div class="itinerary-header" onclick="this.parentElement.classList.toggle('open')"><span class="day-number">3</span><div><div class="day-title">Paris Free Day</div><div class="day-subtitle">Optional: Versailles or Louvre</div></div><span class="accordion-icon">&#9662;</span></div>
+      <div class="itinerary-body"><div class="itinerary-body-inner"><div class="itinerary-meals"><span class="meal-badge">Breakfast</span></div>Free day to explore Paris at your own pace. Optional excursion to the Palace of Versailles or spend the day visiting the Louvre and Montmartre.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── AVAILABILITY TABLE ──────────── -->
+<section id="availability" class="ds-section">
+  <h2 class="ds-section-title">Dates &amp; Availability</h2>
+  <table class="avail-table" style="max-width:800px">
+    <thead><tr><th>Departure</th><th>Price</th><th>Status</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Mar 15, 2026</strong></td><td><span class="fw-600">&euro;2,645</span> <span class="badge-discount" style="font-size:10px">-25%</span></td><td><span class="avail-status almost-sold">Almost Sold Out</span></td><td><button class="btn btn-sm btn-primary">Book Now</button></td></tr>
+      <tr><td><strong>Apr 5, 2026</strong></td><td><span class="fw-600">&euro;2,890</span></td><td><span class="avail-status filling">Filling Fast</span></td><td><button class="btn btn-sm btn-primary">Book Now</button></td></tr>
+      <tr><td><strong>May 10, 2026</strong></td><td><span class="fw-600">&euro;3,150</span></td><td><span class="avail-status available">Available</span></td><td><button class="btn btn-sm btn-outline">Hold Space</button></td></tr>
+      <tr><td><strong>Jun 14, 2026</strong></td><td><span class="fw-600">&euro;3,545</span></td><td><span class="avail-status available">Available</span></td><td><button class="btn btn-sm btn-outline">Hold Space</button></td></tr>
+    </tbody>
+  </table>
+</section>
+
+</main>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     JAVASCRIPT - Interactive behaviors
+     ════════════════════════════════════════════════════════════ -->
+<script>
+// Tabs
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tabGroup = btn.closest('section');
+    tabGroup.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    tabGroup.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    const panel = document.getElementById(btn.dataset.tab);
+    if (panel) panel.classList.add('active');
+  });
+});
+
+// Sidebar active state on scroll
+const sections = document.querySelectorAll('.ds-section');
+const navLinks = document.querySelectorAll('.ds-sidebar a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const top = section.offsetTop - 100;
+    if (window.scrollY >= top) current = section.id;
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+  });
+});
+
+// Close dropdown on outside click
+document.addEventListener('click', e => {
+  document.querySelectorAll('.dropdown.open').forEach(dd => {
+    if (!dd.contains(e.target)) dd.classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>

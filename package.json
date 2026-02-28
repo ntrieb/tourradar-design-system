@@ -1,0 +1,9 @@
+{
+  "name": "tourradar-design-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TourRadar SCOUT Design System - HTML component library",
+  "scripts": {
+    "start": "python3 -m http.server 3003 --directory public"
+  }
+}
