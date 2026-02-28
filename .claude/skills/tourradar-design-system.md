@@ -3,6 +3,7 @@
 When building TourRadar frontend interfaces, always use the design tokens and component patterns documented below. These are sourced from the SCOUT Design System (Figma) and the live TourRadar website.
 
 **Live reference**: https://tourradar-design-system.vercel.app
+**GitHub**: https://github.com/ntrieb/tourradar-design-system
 **Figma source**: https://www.figma.com/design/xbrz3u2rdry1LmCOz12dTh/SCOUT-Design-System
 
 ---

@@ -22,7 +22,7 @@ public/
 
 - Vanilla CSS with custom properties (no Tailwind)
 - Vanilla JS for interactive components
-- Deployed to Vercel as static site
+- Deployed to Vercel as static site: https://tourradar-design-system.vercel.app
 
 ## Design Tokens
 
