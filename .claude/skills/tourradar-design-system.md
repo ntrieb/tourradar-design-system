@@ -66,19 +66,20 @@ Available families: `violet`, `indigo`, `blue`, `teal`, `green`, `amber`, `orang
 ### Typography
 
 ```css
---font-family: 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
---font-family-display: 'Inter', var(--font-family); /* For headings/display */
+--font-family: Helvetica, Arial, FreeSans, sans-serif;
+--font-family-display: Helvetica, Arial, FreeSans, sans-serif;
 
-/* Major Third scale (1.250), base 16px */
---font-size-h1: 2.441em;  /* 39px */
---font-size-h2: 1.953em;  /* 31px */
---font-size-h3: 1.563em;  /* 25px */
---font-size-h4: 1.25em;   /* 20px */
---font-size-h5: 1em;      /* 16px */
---font-size-h6: 0.75em;   /* 12px */
---font-size-body: 1em;    /* 16px */
---font-size-sm: 0.875em;  /* 14px */
---font-size-xs: 0.75em;   /* 12px */
+/* Base: 14px. Headings use Major Third scale (1.250) computed from 16px base */
+--font-size-base: 14px;
+--font-size-h1: 31.25px;  /* 16 × 1.250³ */
+--font-size-h2: 25px;     /* 16 × 1.250² */
+--font-size-h3: 16px;     /* Scale base */
+--font-size-h4: 14px;     /* Body size */
+--font-size-h5: 14px;
+--font-size-h6: 12px;
+--font-size-body: 14px;
+--font-size-sm: 12px;
+--font-size-xs: 11px;
 
 --font-weight-regular: 400;
 --font-weight-medium: 500;
@@ -88,7 +89,19 @@ Available families: `violet`, `indigo`, `blue`, `teal`, `green`, `amber`, `orang
 --line-height-tight: 1.25;
 --line-height-normal: 1.5;
 --line-height-relaxed: 1.75;
+
+/* Pricing Colors */
+--color-price-sale: #378367;      /* Green sale price */
+--color-price-original: #727779;  /* Strikethrough original price */
 ```
+
+**Heading details from live site:**
+| Element | Size | Weight | Line-height | Letter-spacing |
+|---------|------|--------|-------------|----------------|
+| h1 | 31.25px | 700 | 1.25 | -1.2px |
+| h2 | 25px | 700 | 1.25 | normal |
+| h3 | 16px | 700 | 1.5 | normal |
+| h4 | 14px | 700 | 1.5 | normal |
 
 ### Spacing
 
@@ -155,8 +168,8 @@ Available families: `violet`, `indigo`, `blue`, `teal`, `green`, `amber`, `orang
   border: 2px solid transparent; border-radius: var(--radius-pill);
   transition: all var(--transition-fast); line-height: 1; white-space: nowrap;
 }
-.btn-sm { padding: 8px 16px; font-size: var(--font-size-xs); }
-.btn-md { padding: 12px 16px; font-size: var(--font-size-sm); }
+.btn-sm { padding: 8px 16px; font-size: 14px; }
+.btn-md { padding: 12px 16px; font-size: 16px; }
 .btn-lg { padding: 14px 28px; font-size: 1em; }
 .btn-primary { background: var(--color-primary); color: white; }
 .btn-primary:hover { background: var(--color-primary-dark); }
@@ -196,7 +209,7 @@ Available families: `violet`, `indigo`, `blue`, `teal`, `green`, `amber`, `orang
 .badge-success { background: var(--color-green-10); color: var(--color-green-70); }
 .badge-warning { background: var(--color-amber-10); color: var(--color-amber-80); }
 .badge-danger { background: var(--color-red-10); color: var(--color-red-70); }
-.badge-discount { background: var(--color-error); color: white; font-weight: 700; padding: 3px 8px; border-radius: var(--radius-xs); }
+.badge-discount { background: var(--color-error); color: white; font-weight: 700; padding: 4px 12px; border-radius: var(--radius-pill); font-size: 14px; }
 
 .tag {
   display: inline-flex; align-items: center; gap: 4px;

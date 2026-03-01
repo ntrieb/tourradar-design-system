@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classic Europe | 14-day Tour | TourRadar</title>
+  <style>
+/* ═══════════════════════════════════════════════════════════
+   DESIGN TOKENS
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  --color-primary: #177FA4;
+  --color-primary-dark: #0E6D8D;
+  --color-primary-light: #409CD1;
+  --color-primary-bg: #E6F4FD;
+  --color-error: #E22B2C;
+  --color-success: #10B981;
+  --color-warning: #FCA336;
+  --color-price-sale: #378367;
+  --color-price-original: #727779;
+  --text-primary: #323637;
+  --text-secondary: #616668;
+  --text-muted: #A8ADAF;
+  --bg-page: #FFFFFF;
+  --bg-muted: #F4F5F5;
+  --bg-subtle: #F1F2F3;
+  --border-default: #E3E5E6;
+  --font-family: Helvetica, Arial, FreeSans, sans-serif;
+  --font-size-base: 14px;
+  --radius-pill: 9999px;
+  --radius-m: 9px;
+  --radius-l: 11px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  background: var(--bg-page);
+  line-height: 1.5;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+ul, ol { list-style: none; }
+
+h1 { font-size: 31.25px; font-weight: 700; letter-spacing: -1.2px; line-height: 1.25; }
+h2 { font-size: 25px; font-weight: 700; line-height: 1.25; }
+h3 { font-size: 16px; font-weight: 700; line-height: 1.5; }
+h4 { font-size: 14px; font-weight: 700; line-height: 1.5; }
+
+/* ═══════════════════════════════════════════════════════════
+   DEAL BANNER
+   ═══════════════════════════════════════════════════════════ */
+.deal-banner {
+  background: linear-gradient(90deg, #1A1D1E 0%, #2D3436 50%, #1A1D1E 100%);
+  color: #FFFFFF;
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.deal-banner strong { font-weight: 700; }
+.deal-banner .deal-timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--color-error);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.5px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════════════════════ */
+.nav-bar {
+  height: 64px;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.nav-logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-primary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-search {
+  flex: 1;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  height: 40px;
+}
+.nav-search-field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  border-right: 1px solid var(--border-default);
+  height: 100%;
+  gap: 6px;
+  white-space: nowrap;
+}
+.nav-search-field:last-child { border-right: none; }
+.nav-search-field svg { flex-shrink: 0; }
+.nav-search-btn {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  height: 100%;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+.nav-links a {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+.nav-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--text-secondary);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BREADCRUMBS
+   ═══════════════════════════════════════════════════════════ */
+.breadcrumbs {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 24px 0;
+  font-size: 12px;
+  color: var(--color-price-original);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.breadcrumbs a { color: var(--color-price-original); }
+.breadcrumbs a:hover { text-decoration: underline; }
+.breadcrumbs .sep { color: var(--text-muted); }
+
+/* ═══════════════════════════════════════════════════════════
+   MAIN LAYOUT
+   ═══════════════════════════════════════════════════════════ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.page-layout {
+  display: flex;
+  gap: 32px;
+  padding-top: 20px;
+}
+.main-content { flex: 1; min-width: 0; }
+.sidebar { width: 360px; flex-shrink: 0; }
+
+/* ═══════════════════════════════════════════════════════════
+   TOUR HEADER
+   ═══════════════════════════════════════════════════════════ */
+.tour-header { margin-bottom: 20px; }
+.tour-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.tour-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 14px;
+}
+.tour-rating .stars { color: #F5A623; font-size: 16px; letter-spacing: 1px; }
+.tour-rating .rating-num { font-weight: 700; }
+.tour-rating .reviews-link { color: var(--color-primary); }
+.tour-rating .reviews-link:hover { text-decoration: underline; }
+.tour-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.tour-meta .dot { color: var(--text-muted); }
+.operator-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 14px;
+}
+.operator-line a { color: var(--color-primary); font-weight: 700; }
+.operator-line a:hover { text-decoration: underline; }
+.platinum-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: linear-gradient(135deg, #E8E0D0, #D4C9B5);
+  color: #6B5B3E;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   IMAGE GALLERY
+   ═══════════════════════════════════════════════════════════ */
+.gallery {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  gap: 6px;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-muted);
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gallery-item.featured { grid-row: 1 / 3; }
+.gallery-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  background: rgba(0,0,0,0.55);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gallery-play svg { margin-left: 3px; }
+.gallery-review-card {
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  gap: 12px;
+}
+.gallery-review-card .review-quote {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.gallery-review-card .review-author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+.gallery-review-card .review-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-primary-bg);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+}
+.gallery-review-card .review-stars { color: #F5A623; font-size: 13px; }
+.gallery-photo-count {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TOUR META GRID
+   ═══════════════════════════════════════════════════════════ */
+.meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  margin-bottom: 36px;
+}
+.meta-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-default);
+  border-right: 1px solid var(--border-default);
+}
+.meta-item:nth-child(even) { border-right: none; }
+.meta-item:nth-last-child(-n+2) { border-bottom: none; }
+.meta-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--color-primary-bg);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+.meta-label { font-weight: 700; font-size: 14px; color: var(--text-primary); }
+.meta-desc { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION HEADINGS
+   ═══════════════════════════════════════════════════════════ */
+.section-heading {
+  margin-bottom: 20px;
+  padding-bottom: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ITINERARY
+   ═══════════════════════════════════════════════════════════ */
+.itinerary-list { margin-bottom: 40px; }
+.itinerary-day {
+  border-bottom: 1px solid var(--border-default);
+}
+.itinerary-day:last-child { border-bottom: none; }
+.itinerary-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0;
+  cursor: pointer;
+  user-select: none;
+}
+.itinerary-header:hover .day-title { color: var(--color-primary); }
+.day-circle {
+  width: 36px;
+  height: 36px;
+  background: var(--color-primary);
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.day-title {
+  font-size: 14px;
+  font-weight: 700;
+  flex: 1;
+  transition: color 0.15s;
+}
+.day-meals {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.meal-badge {
+  background: #E8F5E9;
+  color: #2E7D32;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+.day-chevron {
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.itinerary-day.open .day-chevron { transform: rotate(180deg); }
+.itinerary-body {
+  display: none;
+  padding: 0 0 20px 50px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.itinerary-day.open .itinerary-body { display: block; }
+.itinerary-body p { margin-bottom: 10px; }
+.itinerary-body ul { padding-left: 18px; list-style: disc; margin-bottom: 10px; }
+.itinerary-body li { margin-bottom: 4px; }
+
+/* ═══════════════════════════════════════════════════════════
+   DATES & PRICING TABLE
+   ═══════════════════════════════════════════════════════════ */
+.dates-section { margin-bottom: 40px; }
+.dates-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.dates-table th {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--border-default);
+  color: var(--text-primary);
+}
+.dates-table td {
+  padding: 14px 16px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border-default);
+  vertical-align: middle;
+}
+.status-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+.status-available { background: #E8F5E9; color: #2E7D32; }
+.status-filling { background: #FFF3E0; color: #E65100; }
+.status-almost { background: #FFEBEE; color: #C62828; }
+.dates-price { font-weight: 700; font-size: 16px; color: var(--text-primary); }
+.dates-table .btn-sm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+}
+.dates-table .btn-sm:hover { background: var(--color-primary-dark); }
+
+/* ═══════════════════════════════════════════════════════════
+   REVIEWS SECTION
+   ═══════════════════════════════════════════════════════════ */
+.reviews-section { margin-bottom: 40px; }
+.reviews-overview {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 28px;
+  padding: 24px;
+  background: var(--bg-muted);
+  border-radius: var(--radius-l);
+}
+.reviews-score {
+  text-align: center;
+  flex-shrink: 0;
+  min-width: 100px;
+}
+.reviews-score .big-num { font-size: 48px; font-weight: 700; color: var(--text-primary); line-height: 1; }
+.reviews-score .out-of { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
+.reviews-score .stars { color: #F5A623; font-size: 18px; letter-spacing: 2px; margin-top: 4px; }
+.reviews-score .total { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+.reviews-bars { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+.bar-label { width: 110px; color: var(--text-secondary); flex-shrink: 0; }
+.bar-track {
+  flex: 1;
+  height: 8px;
+  background: #E3E5E6;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.bar-fill { height: 100%; background: var(--color-primary); border-radius: 4px; }
+.bar-val { width: 28px; text-align: right; font-weight: 600; color: var(--text-primary); }
+
+.review-cards { display: flex; flex-direction: column; gap: 20px; }
+.review-card {
+  padding: 20px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-l);
+}
+.review-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.review-card-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-primary-bg);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.review-card-name { font-weight: 700; font-size: 14px; }
+.review-card-date { font-size: 12px; color: var(--text-muted); }
+.review-card-stars { color: #F5A623; font-size: 14px; margin-left: auto; }
+.review-card-text { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+/* ═══════════════════════════════════════════════════════════
+   BOOKING SIDEBAR
+   ═══════════════════════════════════════════════════════════ */
+.booking-card {
+  position: sticky;
+  top: 88px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-l);
+  padding: 24px;
+  background: #FFFFFF;
+}
+.booking-price-section { margin-bottom: 16px; }
+.booking-from { font-size: 14px; font-weight: 700; color: var(--text-secondary); }
+.booking-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 4px;
+}
+.booking-original {
+  font-size: 18px;
+  color: var(--color-price-original);
+  text-decoration: line-through;
+  font-weight: 400;
+}
+.booking-current {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+.booking-per-person { font-size: 16px; color: var(--text-secondary); font-weight: 400; }
+.booking-discount {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-error);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  margin-left: 4px;
+}
+.booking-room-info {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.booking-fields { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+.booking-field {
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-m);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+.booking-field svg { color: var(--text-muted); flex-shrink: 0; }
+.booking-field span { color: var(--text-secondary); }
+
+.booking-cta-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.btn-primary {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: var(--color-primary-dark); }
+.btn-heart {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--border-default);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.btn-heart:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+.booking-guarantee {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+.booking-guarantee svg { vertical-align: middle; margin-right: 4px; }
+.booking-guarantee a { color: var(--color-primary); font-weight: 600; }
+.booking-guarantee a:hover { text-decoration: underline; }
+
+.booking-plan { border-top: 1px solid var(--border-default); padding-top: 18px; }
+.booking-plan h4 { font-size: 14px; font-weight: 700; margin-bottom: 12px; }
+.booking-plan-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  font-size: 14px;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.booking-plan-link:hover { text-decoration: underline; }
+.booking-plan-link svg { flex-shrink: 0; }
+
+/* ═══════════════════════════════════════════════════════════
+   WHATS INCLUDED
+   ═══════════════════════════════════════════════════════════ */
+.included-section { margin-bottom: 40px; }
+.included-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.included-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 0;
+  font-size: 14px;
+}
+.included-icon { flex-shrink: 0; margin-top: 1px; }
+.included-icon.yes { color: var(--color-success); }
+.included-icon.no { color: var(--color-error); }
+.included-label { color: var(--text-primary); }
+
+/* ═══════════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════════ */
+.site-footer {
+  background: var(--bg-subtle);
+  margin-top: 60px;
+  padding: 48px 24px 24px;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.footer-col h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+.footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+.footer-col li a {
+  font-size: 14px;
+  color: var(--text-primary);
+}
+.footer-col li a:hover { text-decoration: underline; }
+.footer-bottom {
+  border-top: 1px solid var(--border-default);
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.footer-legal { display: flex; gap: 20px; }
+.footer-legal a { color: var(--text-secondary); }
+.footer-legal a:hover { text-decoration: underline; }
+.footer-social { display: flex; gap: 12px; }
+.footer-social a {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+}
+.footer-social a:hover { background: var(--color-primary); color: #fff; }
+
+/* ═══════════════════════════════════════════════════════════
+   DESCRIPTION
+   ═══════════════════════════════════════════════════════════ */
+.description-section {
+  margin-bottom: 36px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+.description-section p { margin-bottom: 12px; }
+
+/* ═══════════════════════════════════════════════════════════
+   MAP IMAGE
+   ═══════════════════════════════════════════════════════════ */
+.map-section { margin-bottom: 36px; }
+.map-img {
+  width: 100%;
+  border-radius: var(--radius-l);
+  border: 1px solid var(--border-default);
+}
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     DEAL BANNER
+     ═══════════════════════════════════════════════════════════ -->
+<div class="deal-banner">
+  <span><strong>Deals of The Week</strong> &middot; Summer in Europe: Up to 50% OFF</span>
+  <span class="deal-timer">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    03d 14h 22m
+  </span>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVIGATION BAR
+     ═══════════════════════════════════════════════════════════ -->
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">TourRadar</a>
+
+    <div class="nav-search">
+      <div class="nav-search-field" style="flex:1.2">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        Destination or tour
+      </div>
+      <div class="nav-search-field">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        When
+      </div>
+      <div class="nav-search-field" style="border-right:none">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        Travelers
+      </div>
+      <button class="nav-search-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </button>
+    </div>
+
+    <div class="nav-links">
+      <a href="#">Destinations</a>
+      <a href="#">Adventure Styles</a>
+      <a href="#">Moments</a>
+      <a href="#">Deals</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <div class="nav-icons">
+      <button class="nav-icon" aria-label="Saved tours">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </button>
+      <button class="nav-icon" aria-label="Account">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════
+     BREADCRUMBS
+     ═══════════════════════════════════════════════════════════ -->
+<div class="breadcrumbs">
+  <a href="#">Home</a>
+  <span class="sep">&gt;</span>
+  <a href="#">Europe Tours</a>
+  <span class="sep">&gt;</span>
+  <a href="#">Western Europe Tours</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MAIN PAGE CONTENT
+     ═══════════════════════════════════════════════════════════ -->
+<div class="container">
+  <div class="page-layout">
+
+    <!-- ─── LEFT: MAIN CONTENT ─── -->
+    <div class="main-content">
+
+      <!-- Tour Header -->
+      <div class="tour-header">
+        <h1>Classic Europe</h1>
+        <div class="tour-rating">
+          <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="rating-num">4.6</span>
+          <a href="#reviews" class="reviews-link">288 traveler reviews</a>
+        </div>
+        <div class="tour-meta">
+          <span>14 days</span>
+          <span class="dot">&middot;</span>
+          <span>Start and end in London</span>
+        </div>
+        <div class="operator-line">
+          <span>Operated by</span>
+          <a href="#">Expat Explore Travel</a>
+          <span class="platinum-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            Platinum Operator
+          </span>
+        </div>
+      </div>
+
+      <!-- Image Gallery -->
+      <div class="gallery">
+        <div class="gallery-item featured">
+          <img src="https://cdn.tourradar.com/s3/tour/750x400/69752_6784ca0d97513.jpg" alt="Classic Europe tour highlights">
+          <div class="gallery-play">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#FFFFFF"><polygon points="8,5 19,12 8,19"/></svg>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://cdn.tourradar.com/s3/tour/750x400/69752_6784caaa2855b.jpg" alt="Munich beer halls">
+        </div>
+        <div class="gallery-item">
+          <img src="https://cdn.tourradar.com/s3/tour/750x400/69752_6784cab356bdc.jpg" alt="European countryside">
+        </div>
+        <div class="gallery-item">
+          <img src="https://cdn.tourradar.com/s3/tour/750x400/69752_6784ca9eedaa8.jpg" alt="Venice canals">
+          <div class="gallery-photo-count">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            10+ photos
+          </div>
+        </div>
+        <div class="gallery-item gallery-review-card">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="review-quote">"An absolutely amazing trip through Europe. Every detail was planned perfectly and our tour guide was incredible."</div>
+          <div class="review-author">
+            <div class="review-avatar">S</div>
+            <div>
+              <div style="font-weight:600">Sarah M.</div>
+              <div style="font-size:12px;color:var(--text-muted)">Traveled Feb 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tour Meta Grid -->
+      <div class="meta-grid">
+        <div class="meta-item">
+          <div class="meta-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          </div>
+          <div>
+            <div class="meta-label">Platinum Operator</div>
+            <div class="meta-desc">Expat Explore Travel</div>
+          </div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <div>
+            <div class="meta-label">Explorer</div>
+            <div class="meta-desc">Curated to ignite your sense of adventure</div>
+          </div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div>
+            <div class="meta-label">Group Tour</div>
+            <div class="meta-desc">Join a group and forge lifelong friendships</div>
+          </div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 00-6 0v4"/><rect x="2" y="9" width="20" height="13" rx="2"/></svg>
+          </div>
+          <div>
+            <div class="meta-label">Fully Guided</div>
+            <div class="meta-desc">An experienced guide will be with you for the entire tour</div>
+          </div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div>
+            <div class="meta-label">Medium Intensity</div>
+            <div class="meta-desc">Travelers should be comfortable with somewhat-demanding activities</div>
+          </div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <div>
+            <div class="meta-label">Guided in English</div>
+            <div class="meta-desc"></div>
+          </div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <div>
+            <div class="meta-label">Group Size 1-50</div>
+            <div class="meta-desc"></div>
+          </div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div>
+            <div class="meta-label">Ages 10+</div>
+            <div class="meta-desc"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="description-section">
+        <h2 class="section-heading">About this tour</h2>
+        <p>Embark on this Classic Europe tour and explore top European destinations! Cruise Amsterdam's canals, and Germany's Rhine River. Capture iconic sites like London's Buckingham Palace, Italy's Leaning Tower of Pisa, and Paris' Eiffel Tower. Savour Tuscan delights, German brews, and Belgian waffles. Summit the Swiss Alps for breathtaking vistas. Revel in free time in Paris, Rome, Amsterdam, and the Swiss Alps. This fast-paced adventure ensures no highlights are missed.</p>
+      </div>
+
+      <!-- Map -->
+      <div class="map-section">
+        <h2 class="section-heading">Map</h2>
+        <img class="map-img" src="https://cdn.tourradar.com/s3/map/1500x800/69752_dc9a.png" alt="Classic Europe tour route map">
+      </div>
+
+      <!-- Itinerary -->
+      <div class="itinerary-section">
+        <h2 class="section-heading">Itinerary</h2>
+        <div class="itinerary-list">
+
+          <div class="itinerary-day open">
+            <div class="itinerary-header" onclick="toggleDay(this)">
+              <div class="day-circle">1</div>
+              <div class="day-title">Start of tour in London</div>
+              <div class="day-meals"><span class="meal-badge">Lunch</span></div>
+              <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="itinerary-body">
+              <p>Welcome to London, the starting point of this Classic Europe tour! This morning, arrive at the hotel and meet up with the tour leader and tour group. Begin the European adventure with a London city tour, checking off top landmarks before indulging in a classic British roast lunch at a local pub.</p>
+              <p><strong>Experiences:</strong></p>
+              <ul>
+                <li>Explore London's top sights with your tour leader</li>
+                <li>Enjoy a roast lunch at a traditional British Pub</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="itinerary-day">
+            <div class="itinerary-header" onclick="toggleDay(this)">
+              <div class="day-circle">2</div>
+              <div class="day-title">London - Paris</div>
+              <div class="day-meals"><span class="meal-badge">Breakfast</span><span class="meal-badge">Dinner</span></div>
+              <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="itinerary-body">
+              <p>This morning, the tour travels to Paris! Cross the English Channel and travel through to the French capital. Upon arrival, embark on a driving tour of the "City of Lights," featuring iconic landmarks like the Eiffel Tower, Arc de Triomphe, and more!</p>
+              <p><strong>Experiences:</strong></p>
+              <ul>
+                <li>See the highlights of Paris on a driving tour!</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="itinerary-day">
+            <div class="itinerary-header" onclick="toggleDay(this)">
+              <div class="day-circle">3</div>
+              <div class="day-title">Paris: Free Day</div>
+              <div class="day-meals"><span class="meal-badge">Breakfast</span></div>
+              <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="itinerary-body">
+              <p>Parisian adventures await! Opt for independent exploration today, soaking up the city's charm, or join the jam-packed Paris+ excursion for a full day of guided discovery and activities. See iconic landmarks like the Arc de Triomphe and Champs-Elysees.</p>
+            </div>
+          </div>
+
+          <div class="itinerary-day">
+            <div class="itinerary-header" onclick="toggleDay(this)">
+              <div class="day-circle">4</div>
+              <div class="day-title">Paris - Burgundy - Swiss Alps</div>
+              <div class="day-meals"><span class="meal-badge">Breakfast</span><span class="meal-badge">Dinner</span></div>
+              <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="itinerary-body">
+              <p>Au revoir Paris! Today, savour the charm of small-town France with a lunch stop in Burgundy. Explore the town of Beaune, visit the beautiful Hospices de Beaune and sample renowned regional wines. Then, embark on a picturesque drive across the border into Switzerland.</p>
+              <p><strong>Experiences:</strong></p>
+              <ul>
+                <li>Visit Beaune; wine capital of Burgundy</li>
+                <li>Marvel at the views on a scenic Swiss mountain drive</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="itinerary-day">
+            <div class="itinerary-header" onclick="toggleDay(this)">
+              <div class="day-circle">5</div>
+              <div class="day-title">Swiss Alps: Free Day</div>
+              <div class="day-meals"><span class="meal-badge">Breakfast</span></div>
+              <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="itinerary-body">
+              <p>Enjoy your free day breathing in the crisp Alpine air. Experience a guaranteed snow day at Jungfraujoch, the "Top of Europe," where snow covers the landscape year-round! Join the optional full-day excursion to this spectacular glacier which offers breathtaking views.</p>
+            </div>
+          </div>
+
+          <div class="itinerary-day">
+            <div class="itinerary-header" onclick="toggleDay(this)">
+              <div class="day-circle">6</div>
+              <div class="day-title">Swiss Alps - Pisa - Tuscany</div>
+              <div class="day-meals"><span class="meal-badge">Breakfast</span></div>
+              <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="itinerary-body">
+              <p>Today, the tour trades snow-capped peaks for rolling Tuscan hills as it travels towards Italy. The first stop is the world-famous and UNESCO World Heritage Site of the Leaning Tower of Pisa.</p>
+              <p><strong>Experiences:</strong></p>
+              <ul>
+                <li>Enjoy a photo stop at the Leaning Tower of Pisa</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="itinerary-day">
+            <div class="itinerary-header" onclick="toggleDay(this)">
+              <div class="day-circle">7</div>
+              <div class="day-title">Tuscany - Florence - Rome</div>
+              <div class="day-meals"><span class="meal-badge">Breakfast</span><span class="meal-badge">Dinner</span></div>
+              <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="itinerary-body">
+              <p>The journey continues through the beautiful Tuscan region today with the first stop being Florence. Embark on a guided tour of this enchanting Renaissance city renowned for its art and history.</p>
+              <p><strong>Experiences:</strong></p>
+              <ul>
+                <li>Discover Florence; the 'Jewel of the Renaissance'</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="itinerary-day">
+            <div class="itinerary-header" onclick="toggleDay(this)">
+              <div class="day-circle">8</div>
+              <div class="day-title">Rome: Free Day</div>
+              <div class="day-meals"><span class="meal-badge">Breakfast</span></div>
+              <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="itinerary-body">
+              <p>Get ready for a free day in Rome! Today offers the opportunity to immerse yourself in Rome's ancient history, rich culture, and delectable cuisine. Consider joining a locally guided tour to explore the Colosseum and Roman Forum.</p>
+            </div>
+          </div>
+
+          <div class="itinerary-day">
+            <div class="itinerary-header" onclick="toggleDay(this)">
+              <div class="day-circle">9</div>
+              <div class="day-title">Rome - Venice</div>
+              <div class="day-meals"><span class="meal-badge">Breakfast</span></div>
+              <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="itinerary-body">
+              <p>Experience the incredible diversity of the Italian landscape as the tour ventures onward to Venice! This unique city spans across 118 islands and is famous for its canals, gondolas, Venetian masks, piazzas, art, and traditional crafts.</p>
+              <p><strong>Experiences:</strong></p>
+              <ul>
+                <li>Explore Venice, Italy's floating city</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="itinerary-day">
+            <div class="itinerary-header" onclick="toggleDay(this)">
+              <div class="day-circle">10</div>
+              <div class="day-title">Venice - Innsbruck - Munich</div>
+              <div class="day-meals"><span class="meal-badge">Breakfast</span><span class="meal-badge">Dinner</span></div>
+              <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="itinerary-body">
+              <p>Farewell, Italy, Guten Tag Germany! Today, the tour journeys to Germany's vibrant capital of the Bavaria region, Munich. En route, stop in Innsbruck, Austria, and embark on an orientation tour.</p>
+              <p><strong>Experiences:</strong></p>
+              <ul>
+                <li>Visit the captivating Austrian city of Innsbruck</li>
+                <li>Discover Munich on an orientation tour</li>
+                <li>Enjoy a German meal in one of Munich's historic restaurants</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="itinerary-day">
+            <div class="itinerary-header" onclick="toggleDay(this)">
+              <div class="day-circle">11</div>
+              <div class="day-title">Munich - Rhine Valley</div>
+              <div class="day-meals"><span class="meal-badge">Breakfast</span><span class="meal-badge">Dinner</span></div>
+              <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="itinerary-body">
+              <p>Continue the German adventure this morning by heading to the enchanting Rhine Valley. Arrive in one of the most picturesque areas along the Rhine River and embark on a cruise along its waters.</p>
+              <p><strong>Experiences:</strong></p>
+              <ul>
+                <li>Enjoy a Rhine River Cruise</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="itinerary-day">
+            <div class="itinerary-header" onclick="toggleDay(this)">
+              <div class="day-circle">12</div>
+              <div class="day-title">Rhine Valley - Amsterdam</div>
+              <div class="day-meals"><span class="meal-badge">Breakfast</span><span class="meal-badge">Dinner</span></div>
+              <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="itinerary-body">
+              <p>Say "Auf Wiedersehen" to Germany this morning as the tour heads towards the Netherlands! Pause in the Dutch countryside to learn about some of the country's renowned local products.</p>
+              <p><strong>Experiences:</strong></p>
+              <ul>
+                <li>Enjoy an Amsterdam canal cruise</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="itinerary-day">
+            <div class="itinerary-header" onclick="toggleDay(this)">
+              <div class="day-circle">13</div>
+              <div class="day-title">Amsterdam - Bruges - London</div>
+              <div class="day-meals"><span class="meal-badge">Breakfast</span></div>
+              <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="itinerary-body">
+              <p>The tour continues to London today! The first stop is the medieval city of Bruges, in Belgium. Enjoy free time in the city to wander cobblestone streets, admire historic architecture, sample Belgian chocolate, and indulge in Belgian waffles!</p>
+              <p><strong>Experiences:</strong></p>
+              <ul>
+                <li>Visit Bruges; a medieval Belgian city</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="itinerary-day">
+            <div class="itinerary-header" onclick="toggleDay(this)">
+              <div class="day-circle">14</div>
+              <div class="day-title">End of tour in London</div>
+              <div class="day-meals"><span class="meal-badge">Breakfast</span></div>
+              <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="itinerary-body">
+              <p>After two incredible weeks spent exploring Europe, the tour comes to an end this morning. Gather with the group for breakfast at the hotel, where you can bid farewell to your fellow travellers and new friends.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- What's Included -->
+      <div class="included-section">
+        <h2 class="section-heading">What's included</h2>
+        <div class="included-grid">
+          <div class="included-item">
+            <span class="included-icon yes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span class="included-label">13 nights hotel accommodation (3-4 star)</span>
+          </div>
+          <div class="included-item">
+            <span class="included-icon yes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span class="included-label">Experienced tour leader throughout</span>
+          </div>
+          <div class="included-item">
+            <span class="included-icon yes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span class="included-label">13 Breakfasts, 1 Lunch, 6 Dinners</span>
+          </div>
+          <div class="included-item">
+            <span class="included-icon yes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span class="included-label">Air-conditioned coach transport</span>
+          </div>
+          <div class="included-item">
+            <span class="included-icon yes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span class="included-label">Rhine River cruise</span>
+          </div>
+          <div class="included-item">
+            <span class="included-icon yes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span class="included-label">Amsterdam canal cruise</span>
+          </div>
+          <div class="included-item">
+            <span class="included-icon no">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </span>
+            <span class="included-label">International flights</span>
+          </div>
+          <div class="included-item">
+            <span class="included-icon no">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </span>
+            <span class="included-label">Travel insurance</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dates & Pricing -->
+      <div class="dates-section" id="dates">
+        <h2 class="section-heading">Dates &amp; Pricing</h2>
+        <table class="dates-table">
+          <thead>
+            <tr>
+              <th>Departure</th>
+              <th>Status</th>
+              <th>Price</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div style="font-weight:600">Mar 28, 2026</div>
+                <div style="font-size:12px;color:var(--text-muted)">Mar 28 - Apr 10, 2026</div>
+              </td>
+              <td><span class="status-badge status-available">Available</span></td>
+              <td>
+                <span class="dates-price">&euro;2,645</span>
+                <span style="font-size:12px;color:var(--text-muted);margin-left:4px">per person</span>
+              </td>
+              <td><button class="btn-sm">Check Availability</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight:600">Apr 11, 2026</div>
+                <div style="font-size:12px;color:var(--text-muted)">Apr 11 - Apr 24, 2026</div>
+              </td>
+              <td><span class="status-badge status-filling">Filling Fast</span></td>
+              <td>
+                <span class="dates-price">&euro;2,645</span>
+                <span style="font-size:12px;color:var(--text-muted);margin-left:4px">per person</span>
+              </td>
+              <td><button class="btn-sm">Check Availability</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight:600">May 2, 2026</div>
+                <div style="font-size:12px;color:var(--text-muted)">May 2 - May 15, 2026</div>
+              </td>
+              <td><span class="status-badge status-almost">Almost Sold Out</span></td>
+              <td>
+                <span class="dates-price">&euro;2,890</span>
+                <span style="font-size:12px;color:var(--text-muted);margin-left:4px">per person</span>
+              </td>
+              <td><button class="btn-sm">Check Availability</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight:600">May 30, 2026</div>
+                <div style="font-size:12px;color:var(--text-muted)">May 30 - Jun 12, 2026</div>
+              </td>
+              <td><span class="status-badge status-available">Available</span></td>
+              <td>
+                <span class="dates-price">&euro;2,890</span>
+                <span style="font-size:12px;color:var(--text-muted);margin-left:4px">per person</span>
+              </td>
+              <td><button class="btn-sm">Check Availability</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight:600">Jun 27, 2026</div>
+                <div style="font-size:12px;color:var(--text-muted)">Jun 27 - Jul 10, 2026</div>
+              </td>
+              <td><span class="status-badge status-filling">Filling Fast</span></td>
+              <td>
+                <span class="dates-price">&euro;3,195</span>
+                <span style="font-size:12px;color:var(--text-muted);margin-left:4px">per person</span>
+              </td>
+              <td><button class="btn-sm">Check Availability</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Reviews -->
+      <div class="reviews-section" id="reviews">
+        <h2 class="section-heading">Reviews</h2>
+
+        <div class="reviews-overview">
+          <div class="reviews-score">
+            <div class="big-num">4.6</div>
+            <div class="out-of">out of 5</div>
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="total">288 reviews</div>
+          </div>
+          <div class="reviews-bars">
+            <div class="bar-row">
+              <span class="bar-label">Itinerary</span>
+              <div class="bar-track"><div class="bar-fill" style="width:92%"></div></div>
+              <span class="bar-val">4.6</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Transport</span>
+              <div class="bar-track"><div class="bar-fill" style="width:94%"></div></div>
+              <span class="bar-val">4.7</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Guide</span>
+              <div class="bar-track"><div class="bar-fill" style="width:94%"></div></div>
+              <span class="bar-val">4.7</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Accommodation</span>
+              <div class="bar-track"><div class="bar-fill" style="width:78%"></div></div>
+              <span class="bar-val">3.9</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Food</span>
+              <div class="bar-track"><div class="bar-fill" style="width:82%"></div></div>
+              <span class="bar-val">4.1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-cards">
+          <div class="review-card">
+            <div class="review-card-header">
+              <div class="review-card-avatar">J</div>
+              <div>
+                <div class="review-card-name">James T.</div>
+                <div class="review-card-date">February 2026</div>
+              </div>
+              <div class="review-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+            <div class="review-card-text">This was hands down the best group tour I've ever been on. Our tour leader made every destination come alive with local stories and hidden gems. The itinerary was perfectly paced with a great mix of guided activities and free time to explore on your own. Venice and the Swiss Alps were absolute highlights. Highly recommend for anyone looking to see the best of Europe in two weeks!</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-header">
+              <div class="review-card-avatar">M</div>
+              <div>
+                <div class="review-card-name">Michelle R.</div>
+                <div class="review-card-date">January 2026</div>
+              </div>
+              <div class="review-card-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+            </div>
+            <div class="review-card-text">Great tour overall with fantastic organization. The Rhine River cruise was magical and the stop in Bruges was a lovely surprise. The only reason I'm giving 4 stars instead of 5 is that some of the hotels were a bit dated, particularly in Rome. The food included in the tour was good but not exceptional. That said, the guide was wonderful and the group dynamic was excellent.</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-header">
+              <div class="review-card-avatar">A</div>
+              <div>
+                <div class="review-card-name">Anna K.</div>
+                <div class="review-card-date">December 2025</div>
+              </div>
+              <div class="review-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+            <div class="review-card-text">I traveled solo and this tour was perfect for meeting like-minded people. By the end of 14 days, our group felt like family. The itinerary covered so many bucket-list destinations and the optional excursions were well worth it. The Swiss Alps free day at Jungfraujoch was absolutely unforgettable. Already planning my next Expat Explore trip!</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ─── RIGHT: BOOKING SIDEBAR ─── -->
+    <div class="sidebar">
+      <div class="booking-card">
+        <div class="booking-price-section">
+          <div class="booking-from">From</div>
+          <div class="booking-price-row">
+            <span class="booking-original">&euro;3,545</span>
+            <span class="booking-current">&euro;2,645</span>
+            <span class="booking-discount">-25%</span>
+          </div>
+          <div class="booking-per-person">per person</div>
+          <div class="booking-room-info">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            Price based on Shared Room
+          </div>
+        </div>
+
+        <div class="booking-fields">
+          <div class="booking-field">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <span>Select Date</span>
+          </div>
+          <div class="booking-field">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            2 Adults
+          </div>
+        </div>
+
+        <div class="booking-cta-row">
+          <button class="btn-primary">Check Availability</button>
+          <button class="btn-heart" aria-label="Save tour">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </button>
+        </div>
+
+        <div class="booking-guarantee">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Best price guarantee
+          <a href="#">Learn More</a>
+        </div>
+
+        <div class="booking-plan">
+          <h4>Plan your adventure:</h4>
+          <a href="#" class="booking-plan-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Download PDF Brochure
+          </a>
+          <a href="#" class="booking-plan-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            Contact Operator
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Top Destinations</h4>
+        <ul>
+          <li><a href="#">Europe Tours</a></li>
+          <li><a href="#">Asia Tours</a></li>
+          <li><a href="#">Africa Tours</a></li>
+          <li><a href="#">South America Tours</a></li>
+          <li><a href="#">North America Tours</a></li>
+          <li><a href="#">Australia Tours</a></li>
+          <li><a href="#">Middle East Tours</a></li>
+          <li><a href="#">Antarctica Tours</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Travel Styles</h4>
+        <ul>
+          <li><a href="#">Explorer</a></li>
+          <li><a href="#">Budget</a></li>
+          <li><a href="#">Active</a></li>
+          <li><a href="#">Luxury</a></li>
+          <li><a href="#">Family</a></li>
+          <li><a href="#">River Cruises</a></li>
+          <li><a href="#">Ocean Cruises</a></li>
+          <li><a href="#">Small Group</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About TourRadar</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Magazine</a></li>
+          <li><a href="#">Affiliate Program</a></li>
+          <li><a href="#">List Your Tours</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 TourRadar GmbH. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+        <a href="#">Imprint</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#fff"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════════════════════════ -->
+<script>
+function toggleDay(header) {
+  const day = header.parentElement;
+  day.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>

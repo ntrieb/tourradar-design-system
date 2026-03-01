@@ -79,16 +79,20 @@
   --border-default: #E3E5E6;
   --border-light: #F4F5F5;
 
-  /* ── Typography ── */
-  --font-family: 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
-  --font-family-display: 'Inter', var(--font-family);
-  --font-size-base: 16px;
-  --font-size-h1: 2.441em; --font-size-h2: 1.953em; --font-size-h3: 1.563em;
-  --font-size-h4: 1.25em;  --font-size-h5: 1em;     --font-size-h6: 0.75em;
-  --font-size-body: 1em; --font-size-sm: 0.875em; --font-size-xs: 0.75em;
+  /* ── Typography (matched to live TourRadar site) ── */
+  --font-family: Helvetica, Arial, FreeSans, sans-serif;
+  --font-family-display: Helvetica, Arial, FreeSans, sans-serif;
+  --font-size-base: 14px;
+  --font-size-h1: 31.25px; --font-size-h2: 25px; --font-size-h3: 16px;
+  --font-size-h4: 14px;    --font-size-h5: 14px; --font-size-h6: 12px;
+  --font-size-body: 14px; --font-size-sm: 12px; --font-size-xs: 11px;
   --font-weight-regular: 400; --font-weight-medium: 500;
   --font-weight-semibold: 600; --font-weight-bold: 700;
   --line-height-tight: 1.25; --line-height-normal: 1.5; --line-height-relaxed: 1.75;
+
+  /* ── Pricing Colors ── */
+  --color-price-sale: #378367;
+  --color-price-original: #727779;
 
   /* ── Spacing ── */
   --space-xxxs: 2px;  --space-xxs: 4px;   --space-xs: 8px;    --space-s: 12px;
@@ -210,8 +214,8 @@ body {
   transition: all var(--transition-fast); text-decoration: none;
   line-height: 1; white-space: nowrap;
 }
-.btn-sm { padding: 8px 16px; font-size: var(--font-size-xs); }
-.btn-md { padding: 12px 16px; font-size: var(--font-size-sm); }
+.btn-sm { padding: 8px 16px; font-size: 14px; }
+.btn-md { padding: 12px 16px; font-size: 16px; }
 .btn-lg { padding: 14px 28px; font-size: 1em; }
 .btn-primary { background: var(--color-primary); color: white; }
 .btn-primary:hover { background: var(--color-primary-dark); }
@@ -244,7 +248,7 @@ body {
 .badge-info { background: var(--color-blue-10); color: var(--color-blue-70); }
 .badge-neutral { background: var(--bg-muted); color: var(--text-secondary); }
 .badge-count { min-width: 22px; height: 22px; padding: 0 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
-.badge-discount { background: var(--color-error); color: white; font-weight: 700; padding: 3px 8px; border-radius: var(--radius-xs); }
+.badge-discount { background: var(--color-error); color: white; font-weight: 700; padding: 4px 12px; border-radius: var(--radius-pill); font-size: 14px; }
 
 .tag {
   display: inline-flex; align-items: center; gap: 4px;
@@ -307,7 +311,8 @@ textarea.form-input { min-height: 100px; resize: vertical; }
 .star.empty { color: var(--color-grey-20); }
 .star.half { position: relative; color: var(--color-grey-20); }
 .star.half::before { content: '\2605'; position: absolute; color: var(--color-amber-50); overflow: hidden; width: 50%; }
-.rating-text { margin-left: var(--space-xs); font-size: var(--font-size-sm); color: var(--text-secondary); }
+.rating-text { margin-left: var(--space-xs); font-size: 16px; color: var(--color-teal-50); }
+.rating-score { font-weight: 700; color: #003A4D; font-size: 16px; }
 .rating-lg .star { font-size: 24px; }
 
 /* ═══════════════════════════════════════════════════════════
@@ -401,9 +406,9 @@ textarea.form-input { min-height: 100px; resize: vertical; }
 /* ═══════════════════════════════════════════════════════════
    UI ELEMENTS: BREADCRUMBS
    ═══════════════════════════════════════════════════════════ */
-.breadcrumb { display: flex; align-items: center; gap: var(--space-xs); font-size: var(--font-size-sm); }
-.breadcrumb a { color: var(--color-primary-light); text-decoration: none; }
-.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb { display: flex; align-items: center; gap: var(--space-xs); font-size: 12px; }
+.breadcrumb a { color: #727779; text-decoration: none; }
+.breadcrumb a:hover { color: var(--color-primary); text-decoration: underline; }
 .breadcrumb .sep { color: var(--text-muted); }
 .breadcrumb .current { color: var(--text-secondary); }
 
@@ -463,9 +468,9 @@ textarea.form-input { min-height: 100px; resize: vertical; }
 .tour-card-meta .tag { font-size: 11px; padding: 2px 8px; }
 .tour-card-operator { font-size: var(--font-size-xs); color: var(--text-muted); margin-bottom: var(--space-s); }
 .tour-card-pricing { display: flex; align-items: baseline; gap: var(--space-xs); margin-bottom: var(--space-s); }
-.tour-card-pricing .original { text-decoration: line-through; color: var(--text-muted); font-size: var(--font-size-sm); }
-.tour-card-pricing .current { font-size: 1.3em; font-weight: 700; color: var(--text-primary); }
-.tour-card-pricing .per-person { font-size: var(--font-size-xs); color: var(--text-muted); }
+.tour-card-pricing .original { text-decoration: line-through; color: var(--color-price-original); font-size: 14px; }
+.tour-card-pricing .current { font-size: 1.3em; font-weight: 700; color: var(--color-price-sale); }
+.tour-card-pricing .per-person { font-size: 14px; color: var(--text-primary); }
 .tour-card-actions { display: flex; gap: var(--space-xs); }
 .tour-card-actions .btn { flex: 1; justify-content: center; font-size: var(--font-size-xs); }
 
@@ -473,13 +478,12 @@ textarea.form-input { min-height: 100px; resize: vertical; }
    COMPOSITE: NAVIGATION
    ═══════════════════════════════════════════════════════════ */
 .site-nav {
-  background: white; border-bottom: 1px solid var(--border-default);
+  background: white;
   padding: 0 var(--space-l); display: flex; align-items: center; height: 64px;
-  box-shadow: var(--shadow-xs);
 }
 .site-nav-logo { font-size: 1.3em; font-weight: 800; color: var(--color-primary); text-decoration: none; margin-right: var(--space-xl); }
 .site-nav-links { display: flex; gap: var(--space-l); flex: 1; }
-.site-nav-links a { color: var(--text-secondary); text-decoration: none; font-size: var(--font-size-sm); font-weight: 500; transition: color var(--transition-fast); }
+.site-nav-links a { color: var(--color-primary); text-decoration: none; font-size: 14px; font-weight: 400; transition: color var(--transition-fast); }
 .site-nav-links a:hover { color: var(--color-primary); }
 .site-nav-trust { display: flex; gap: var(--space-m); align-items: center; margin-left: auto; }
 .trust-badge { display: flex; align-items: center; gap: 4px; font-size: var(--font-size-xs); color: var(--text-secondary); }
@@ -505,9 +509,9 @@ textarea.form-input { min-height: 100px; resize: vertical; }
   max-width: 360px;
 }
 .booking-price { margin-bottom: var(--space-m); }
-.booking-price .original { text-decoration: line-through; color: var(--text-muted); font-size: var(--font-size-sm); }
-.booking-price .current { font-size: 2em; font-weight: 800; color: var(--text-primary); }
-.booking-price .per { font-size: var(--font-size-sm); color: var(--text-secondary); }
+.booking-price .original { text-decoration: line-through; color: var(--color-price-original); font-size: 16px; }
+.booking-price .current { font-size: 2em; font-weight: 700; color: var(--text-primary); }
+.booking-price .per { font-size: 16px; color: var(--text-primary); }
 .room-selector { display: flex; gap: var(--space-xs); margin-bottom: var(--space-m); flex-wrap: wrap; }
 .room-option {
   flex: 1; min-width: 0; padding: var(--space-xs) var(--space-s); border: 1px solid var(--border-default);
@@ -522,8 +526,8 @@ textarea.form-input { min-height: 100px; resize: vertical; }
    ═══════════════════════════════════════════════════════════ */
 .site-footer { background: var(--bg-subtle); padding: var(--space-xxl) var(--space-l) var(--space-l); }
 .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--space-xl); margin-bottom: var(--space-xl); }
-.footer-col h4 { font-size: var(--font-size-sm); font-weight: 700; margin-bottom: var(--space-s); color: var(--text-primary); }
-.footer-col a { display: block; font-size: var(--font-size-xs); color: var(--text-secondary); text-decoration: none; margin-bottom: var(--space-xs); }
+.footer-col h4 { font-size: 16px; font-weight: 700; margin-bottom: var(--space-s); color: var(--text-primary); }
+.footer-col a { display: block; font-size: 14px; color: var(--text-primary); text-decoration: none; margin-bottom: var(--space-xs); }
 .footer-col a:hover { color: var(--color-primary); }
 .footer-bottom { border-top: 1px solid var(--border-default); padding-top: var(--space-m); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-m); }
 .footer-bottom-links { display: flex; gap: var(--space-m); }
@@ -545,7 +549,7 @@ textarea.form-input { min-height: 100px; resize: vertical; }
 /* ═══════════════════════════════════════════════════════════
    COMPOSITE: ITINERARY DAY
    ═══════════════════════════════════════════════════════════ */
-.itinerary-day { border: 1px solid var(--border-default); border-radius: var(--radius-m); margin-bottom: var(--space-xs); overflow: hidden; }
+.itinerary-day { border: none; border-bottom: 1px solid var(--border-default); border-radius: 0; margin-bottom: 0; padding: var(--space-s) 0 0; }
 .itinerary-header { display: flex; align-items: center; gap: var(--space-m); padding: var(--space-m); cursor: pointer; user-select: none; }
 .itinerary-header:hover { background: var(--bg-muted); }
 .day-number { background: var(--color-primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: var(--font-size-sm); flex-shrink: 0; }
@@ -561,7 +565,7 @@ textarea.form-input { min-height: 100px; resize: vertical; }
    COMPOSITE: AVAILABILITY TABLE
    ═══════════════════════════════════════════════════════════ */
 .avail-table { width: 100%; border-collapse: collapse; font-size: var(--font-size-sm); }
-.avail-table th { text-align: left; padding: var(--space-s) var(--space-m); border-bottom: 2px solid var(--border-default); font-weight: 600; color: var(--text-secondary); font-size: var(--font-size-xs); text-transform: uppercase; }
+.avail-table th { text-align: left; padding: var(--space-s) var(--space-m); border-bottom: 2px solid var(--border-default); font-weight: 700; color: var(--text-primary); font-size: 14px; text-transform: none; }
 .avail-table td { padding: var(--space-s) var(--space-m); border-bottom: 1px solid var(--border-light); }
 .avail-table tr:hover td { background: var(--bg-muted); }
 .avail-status { font-size: var(--font-size-xs); font-weight: 600; }
