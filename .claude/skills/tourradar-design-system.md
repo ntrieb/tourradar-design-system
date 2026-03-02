@@ -91,17 +91,20 @@ Available families: `violet`, `indigo`, `blue`, `teal`, `green`, `amber`, `orang
 --line-height-relaxed: 1.75;
 
 /* Pricing Colors */
---color-price-sale: #378367;      /* Green sale price */
---color-price-original: #727779;  /* Strikethrough original price */
+--color-price-sale: #378367;      /* Green sale price (used in some contexts) */
+--color-price-original: #727779;  /* Strikethrough original price (tour detail) */
+/* Note: On SERP cards, sale price uses var(--text-primary), not green.
+   On SERP cards, original price uses #505557, not #727779. */
 ```
 
 **Heading details from live site:**
-| Element | Size | Weight | Line-height | Letter-spacing |
-|---------|------|--------|-------------|----------------|
-| h1 | 31.25px | 700 | 1.25 | -1.2px |
-| h2 | 25px | 700 | 1.25 | normal |
-| h3 | 16px | 700 | 1.5 | normal |
-| h4 | 14px | 700 | 1.5 | normal |
+| Element | Size | Weight | Line-height | Letter-spacing | Notes |
+|---------|------|--------|-------------|----------------|-------|
+| h1 (detail) | 31.25px | 700 | 1.25 | -1.2px | Tour detail page |
+| h1 (SERP) | 28px | 700 | 35px | -0.4px | Search results page |
+| h2 | 25px | 700 | 1.25 | normal | |
+| h3 | 16px | 700 | 1.5 | normal | |
+| h4 | 14px | 700 | 1.5 | normal | |
 
 ### Spacing
 
@@ -168,9 +171,11 @@ Available families: `violet`, `indigo`, `blue`, `teal`, `green`, `amber`, `orang
   border: 2px solid transparent; border-radius: var(--radius-pill);
   transition: all var(--transition-fast); line-height: 1; white-space: nowrap;
 }
-.btn-sm { padding: 8px 16px; font-size: 14px; }
-.btn-md { padding: 12px 16px; font-size: 16px; }
+.btn-sm { padding: 8px 16px; font-size: 14px; border-radius: 24px; height: 40px; }
+.btn-md { padding: 15px 16px; font-size: 16px; border-radius: 32px; height: 48px; }
 .btn-lg { padding: 14px 28px; font-size: 1em; }
+/* Note: SERP "View Tour" buttons use btn-sm style (14px, 24px radius, 40px height).
+   Tour detail CTA buttons use btn-md style (16px, 32px radius, 48px height). */
 .btn-primary { background: var(--color-primary); color: white; }
 .btn-primary:hover { background: var(--color-primary-dark); }
 .btn-secondary { background: var(--color-primary-bg); color: var(--color-primary-dark); }
@@ -361,6 +366,10 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
 ### Breadcrumbs
 
+Breadcrumb link color varies by page context:
+- Tour detail: `#727779` (rgb(114,119,121))
+- SERP: `#818D99` (rgb(129,141,153))
+
 ```html
 <nav class="breadcrumb">
   <a href="#">Home</a>
@@ -442,6 +451,8 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
 ### Navigation Bar
 
+Nav links use `var(--text-primary)` color (NOT teal). Hover state uses `var(--color-primary-dark)`.
+
 ```html
 <nav class="site-nav">
   <a href="#" class="site-nav-logo">tourradar</a>
@@ -455,6 +466,11 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     <span class="trust-badge">&#9733; 4.6 (9,913 reviews)</span>
   </div>
 </nav>
+```
+
+```css
+.site-nav-links a { color: var(--text-primary); font-size: 14px; font-weight: 400; }
+.site-nav-links a:hover { color: var(--color-primary-dark); }
 ```
 
 ### Search Bar
